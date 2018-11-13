@@ -11,8 +11,8 @@
 
     <div class="paddingtop btn-group-toggle btn-group">
 
-        <button id="navKurser" class="btn btn-primary my-2 " type="submit">Kurser</button>
-        <button id="navStudenter" class="btn btn-primary " type="submit">Studenter</button>
+        <button id="navKurser" class="btn btn-primary" type="submit">Kurser</button>
+        <button id="navStudenter" class="btn btn-primary" type="submit">Studenter</button>
         
     </div>
 
@@ -343,12 +343,13 @@
         var btn = document.getElementById("kurs_Slider").innerHTML;
 
         if ( btn == icon + "Lägg till ny kurs") {
-                t = "Avbryt"
+            t = "Avbryt"
             }
             else {
-                t = icon + " Lägg till ny kurs";
-            }
-        document.getElementById("kurs_Slider").innerHTML = t;
+            t = icon + " Lägg till ny kurs";
+        }
+        text.textContent = t;
+        t = document.getElementById("kurs_Slider").innerHTML = t;
         
 
 
