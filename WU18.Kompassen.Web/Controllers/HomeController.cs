@@ -25,5 +25,20 @@ namespace WU18.Kompassen.Web.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Student()
+        {
+            return View();
+        }
+
+        public IActionResult Course()
+        {
+            return View();
+        }
+
+        public IActionResult AddCourse()
+        {
+            return View();
+        }
     }
 }

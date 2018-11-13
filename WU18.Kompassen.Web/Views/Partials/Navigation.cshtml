@@ -7,14 +7,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand navigation menu-link" href="#start">Kompassen - alltid på rätt kurs</a>
+            <a class="navbar-brand navigation menu-link" asp-area="" asp-controller="Home" asp-action="Index">Kompassen - alltid på rätt kurs</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a class="navigation" href="#start">Start</a></li>
-                <li><a class="navigation" href="#courses">Kurser</a></li>
-                <li><a class="navigation" href="#students">Studenter</a></li>
-                <li><a class="navigation" href="#addCourse">Ny kurs</a></li>
+                <li class="active"><a class="navigation" asp-area="" asp-controller="Home" asp-action="Index">Start</a></li>
+                <li><a class="navigation" asp-area="" asp-controller="Home" asp-action="Course">Kurser</a></li>
+                <li><a class="navigation" asp-area="" asp-controller="Home" asp-action="Student">Studenter</a></li>
+                <!-- <li><a class="navigation" asp-area="" asp-controller="Home" asp-action="AddCourse">Ny kurs</a></li> -->
                 <li style="display:none"><a class="navigation" href="#addStudent">Ny student</a></li>
             </ul>
         </div>
