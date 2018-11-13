@@ -13,7 +13,7 @@
 
         <button id="navKurser" class="btn btn-primary" type="submit">Kurser</button>
         <button id="navStudenter" class="btn btn-primary" type="submit">Studenter</button>
-        
+
     </div>
 
 
@@ -94,7 +94,7 @@
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
             <div class="col-lg-4 padding">
-                <button id="kurs_Slider" type="submit" class="btn btn-primary btntext"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Lägg till ny kurs</button>
+                <button id="kurs_Slider" class="btn btn-primary open"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Lägg till ny kurs</button>
             </div>
         </div>
 
@@ -179,9 +179,24 @@
 
     </div> <!--Panel End-->
 
+    
+        <div id="panel3" class="panel panel-primary">
 
-    <div id="panel3" class="panel panel-primary">
-        <div class="panel-heading">Ny Kurs</div>
+
+            <div class=" panel-heading ">
+                Ny Kurs
+                <div class="pull-right"><Button id="btnClose" class="nobg"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></Button></div>
+            </div>
+
+            
+            
+
+
+
+
+
+        
+
         <br />
 
         <div class="container">
@@ -222,7 +237,7 @@
 
 
 
-
+                
 
 
 
@@ -300,7 +315,10 @@
         $("#panel1").show();
         $("#panel2").hide();
         $("#panel3").hide();
-       
+
+      
+     
+            
 
     });
 
@@ -311,11 +329,11 @@
         $("#panel2").show();
         $("#panel1").hide();
         $("#panel3").hide();
-       
 
+     
     });
 
-    $("#navNyKurs").on("click", function () {
+   /* $("#navNyKurs").on("click", function () {
 
 
 
@@ -324,7 +342,7 @@
         $("#panel2").hide();
       
 
-    });
+    });*/
 
     $("#kurs_Slider").on("click", function () {
 
@@ -332,32 +350,39 @@
 
         $("#panel3").slideToggle();
 
+        var icon = "<span class='glyphicon glyphicon-plus' aria-hidden='true'>";
+        var $this = $(this);
+        $this.toggleClass('open');
 
-        var button = document.querySelector("#kurs_Slider")
-        var text = document.querySelector(".btntext")
-        
-        var t
-       
-        var icon = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
+        var option1 = icon + ' Lägg till ny kurs';
+        var option2 = ' Avbryt';
 
-        var btn = document.getElementById("kurs_Slider").innerHTML;
-
-        if ( btn == icon + "Lägg till ny kurs") {
-            t = "Avbryt"
-            }
-            else {
-            t = icon + " Lägg till ny kurs";
+        if ($this.hasClass('open')) {
+            $this.html(option1);
+        } else {
+            $this.html(option2);
         }
-        text.textContent = t;
-        t = document.getElementById("kurs_Slider").innerHTML = t;
-        
-
-
        
     });
 
+    $("#btnClose").on("click", function () {
+
+
+
+        $("#panel3").slideUp();
+
+      
+
+    });
+
+
+
+    
+
 
 </script>
+
+
 
 
 
