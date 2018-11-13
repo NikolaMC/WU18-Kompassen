@@ -11,9 +11,9 @@
 
     <div class="paddingtop btn-group-toggle btn-group">
 
-        <button id="navKurser" class="btn btn-primary my-2 my-sm-0" type="submit">Kurser</button>
-        <button id="navStudenter" class="btn btn-primary my-2 my-sm-0" type="submit">Studenter</button>
-        <button id="navNyKurs" class="btn btn-primary my-2 my-sm-0" type="submit">Ny Kurs</button>
+        <button id="navKurser" class="btn btn-primary my-2 " type="submit">Kurser</button>
+        <button id="navStudenter" class="btn btn-primary " type="submit">Studenter</button>
+        <button id="navNyKurs" class="btn btn-primary " type="submit">Ny Kurs</button>
     </div>
 
 
@@ -58,23 +58,14 @@
 
 
 
+                    <br />
+                    <br />
 
-                    <div class="list-group-item-heading">
-
-                        <button type="button" class="list-group-item list-group-item-action active">
-                            Kurser
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 1</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 2</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 3</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Kurs 4</button>
-                    </div>
-
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-info">Sök</button>
-                    </div>
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
+            <div class="col-lg-4 padding">
+                <button id="kurs_Slider" type="submit" class="btn btn-primary"><p class="btntext">Lägg till ny kurs</p></button>
+            </div>
         </div>
 
     </div> <!--Panel End-->
@@ -161,7 +152,7 @@
 
     <div id="panel3" class="panel panel-primary">
         <div class="panel-heading">Ny Kurs</div>
-        <div class="panel-body">Panel Content</div>
+        <br />
 
         <div class="container">
             <div class="row">
@@ -171,45 +162,97 @@
 
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="formGroupExampleInput">Namn</label>
+                            <input type="text" class="form-control" id="kurser_Namn" placeholder="Example input">
                         </div>
-
 
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="formGroupExampleInput">Poäng</label>
+                            <input type="text" class="form-control" id="kurser_Poäng" placeholder="Example input">
                         </div>
 
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">År</label>
+                            <input type="text" class="form-control" id="kurser_År" placeholder="Example input">
+                        </div>
 
-                        <select class="form-control">
-                            <option>Default select</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Termin</label>
+                            <input type="text" class="form-control" id="kurser_Termin" placeholder="Example input">
+                        </div>
 
                     </form>
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-primary">Spara</button>
-                        <button type="submit" class="btn btn-warning">Lägg till</button>
+                    <div class="col-lg-4 padding paddingbot">
+                        <button type="submit" class="btn btn-success">Spara</button>
+
                     </div>
 
 
 
 
-                    <div class="list-group-item-heading">
 
-                        <button type="button" class="list-group-item list-group-item-action active">
-                            Kurser
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 1</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 2</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 3</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Kurs 4</button>
-                    </div>
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-info">Sök</button>
-                    </div>
+
+
+
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">Namn</th>
+                                <th scope="col">Poäng</th>
+                                <th scope="col">Antal Studenter</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+
+
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+
+
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
         </div>
@@ -227,7 +270,7 @@
         $("#panel1").show();
         $("#panel2").hide();
         $("#panel3").hide();
-        console.log("Nu hände ngt");
+       
 
     });
 
@@ -238,7 +281,7 @@
         $("#panel2").show();
         $("#panel1").hide();
         $("#panel3").hide();
-        console.log("Nu hände ngt");
+       
 
     });
 
@@ -249,10 +292,39 @@
         $("#panel3").show();
         $("#panel1").hide();
         $("#panel2").hide();
-        console.log("Nu hände ngt");
+      
 
+    });
+
+    $("#kurs_Slider").on("click", function () {
+
+
+
+        $("#panel3").slideToggle();
+
+
+        var button = document.querySelector("#kurs_Slider")
+        var text = document.querySelector(".btntext")
+        var t
+       
+
+
+            if (text.textContent == "Lägg till ny kurs") {
+                t = "Avbryt"
+            }
+            else {
+                t = "Lägg till ny kurs"
+            }
+            text.textContent = t;
+        
+
+
+       
     });
 
 
 </script>
+
+
+
 
