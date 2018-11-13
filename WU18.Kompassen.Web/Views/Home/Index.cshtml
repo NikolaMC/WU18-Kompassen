@@ -13,7 +13,7 @@
 
         <button id="navKurser" class="btn btn-primary my-2 " type="submit">Kurser</button>
         <button id="navStudenter" class="btn btn-primary " type="submit">Studenter</button>
-        <button id="navNyKurs" class="btn btn-primary " type="submit">Ny Kurs</button>
+        
     </div>
 
 
@@ -24,7 +24,7 @@
 
     <div id="panel1" class="panel panel-primary">
         <div class="panel-heading">Kurser</div>
-        <div class="panel-body">Panel Content</div>
+        <br />
 
         <div class="container">
             <div class="row">
@@ -60,11 +60,41 @@
 
                     <br />
                     <br />
+                    <table class="table">
+                        <thead>
+                            <tr>
 
+                                <th scope="col">Förnamn</th>
+                                <th scope="col">Efternamn</th>
+                                <th scope="col">Personnummer</th>
+                                <th scope="col">Läser</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+
+
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+
+
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+
+
+                            </tr>
+                        </tbody>
+                    </table>
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
             <div class="col-lg-4 padding">
-                <button id="kurs_Slider" type="submit" class="btn btn-primary btntext">Lägg till ny kurs</button>
+                <button id="kurs_Slider" type="submit" class="btn btn-primary btntext"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Lägg till ny kurs</button>
             </div>
         </div>
 
@@ -308,15 +338,17 @@
         
         var t
        
+        var icon = "<span class='glyphicon glyphicon-plus' aria-hidden='true'></span>";
 
+        var btn = document.getElementById("kurs_Slider").innerHTML;
 
-            if (text.textContent == "Lägg till ny kurs") {
+        if ( btn == icon + "Lägg till ny kurs") {
                 t = "Avbryt"
             }
             else {
-                t = "Lägg till ny kurs"
+                t = icon + " Lägg till ny kurs";
             }
-            text.textContent = t;
+        document.getElementById("kurs_Slider").innerHTML = t;
         
 
 
