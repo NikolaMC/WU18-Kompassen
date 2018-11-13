@@ -3,69 +3,7 @@
     ViewData["Title"] = "Course";
 }
 
-@*The default view. A list of all courses and students.*@
-<div id="courseDetailsPlaceholder" style="max-width: 810px;">
-    <form id="courseDetailsForm">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><span name="title"></span></h3>
-            </div>
-            <div class="panel-body">
-                <div style="float: left; padding: 10px; padding-top: 0px; padding-bottom: 0px;">
-                    <div class="well well-sm">
-                        <div class="form-group">
-                            <label>Namn</label>
-                            <input type="text" class="form-control" placeholder="Namn" name="name">
-                        </div>
-                        <div class="form-group">
-                            <label>Poäng</label>
-                            <input type="text" class="form-control" name="credits" placeholder="Poäng">
-                        </div>
-                        <div class="form-group">
-                            <label>År</label>
-                            <select class="form-control" name="year">
-                                <option value="2017">2017</option>
-                                <option value="2018">2018</option>
-                                <option value="2019">2019</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Termin</label>
-                            <input type="text" class="form-control" name="term" placeholder="Termin">
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" name="active" checked="checked">Aktiv</label>
-                        </div>
-                    </div>
-                </div>
-                <div style="float: left; padding: 10px; padding-top: 0; padding-bottom: 0;">
-                    <div class="well well-sm">
-                        @*Students*@
-                        <div>
-                            <p>Studenter</p>
-                            @*Add new <div>*@
-                            <div style="float: left; padding: 3px; padding-left: 0;">
-                                <select class="form-control" id="courseDetailsStudentSelectList"></select>
-                            </div>
-                            <div style="float: left; padding: 3px;">
-                                <button type="button" id="registerSelectedStudentButton" class="btn btn-primary btn-sm">Registrera</button>
-                            </div>
-                            @*</div>*@
-                            <div style="clear: both;"></div>
-                            <div class="list-group" id="courseDetailsStudentListPlaceholder">
-                                List of students currently assigned the this course.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="clear: both; padding: 10px; padding-top: 0px;">
-                    <button type="submit" class="btn btn-success">Spara</button>
-                    <button type="button" id="courseDetailsCancelButton" class="btn btn-warning">Stäng</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+
 
 @*A list of all courses.*@
 <div id="courseListPlaceholder">
