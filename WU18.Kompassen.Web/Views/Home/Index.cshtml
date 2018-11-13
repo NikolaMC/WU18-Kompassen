@@ -70,8 +70,8 @@
 
     <div id="panel2" class="panel panel-primary">
         <div class="panel-heading">Studenter</div>
-        <div class="panel-body">Panel Content</div>
-
+        
+        <br />
         <div class="container">
             <div class="row">
 
@@ -80,45 +80,66 @@
 
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="formGroupExampleInput">Namn</label>
+                            <input type="text" class="form-control" id="studenter_namn" placeholder="Example input">
                         </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Poäng</label>
+                            <input type="text" class="form-control" id="studenter_poäng" placeholder="Example input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">År</label>
+                            <input type="text" class="form-control" id="studenter_år" placeholder="Example input">
+                        </div>
+
 
 
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="formGroupExampleInput">Termin</label>
+                            <input type="text" class="form-control" id="studenter_år" placeholder="Example input">
                         </div>
 
+                        <br />
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Aktiv</label>
 
-                        <select class="form-control">
-                            <option>Default select</option>
-                        </select>
+                        <br />
+                        <br />
+                        <div class="container">
+                            <div class="col-lg-8">
+                                <div class="form-group">
+                                    <label for="sel1">Studenter</label>
+                                    <select class="form-control" id="">
+                                        <option>Default</option>
 
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col-lg-4 paddingtopbig">
+                                
+                                <button type="submit" class="btn btn-primary">Registrera</button>
+
+                            </div>
+                        </div>
                     </form>
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-primary">Spara</button>
-                        <button type="submit" class="btn btn-warning">Lägg till</button>
+                    <div class="col-lg-6 padding paddingbot">
+                        <button type="submit" class="btn btn-success">Spara</button>
+                        <button type="submit" class="btn btn-warning">Stäng</button>
                     </div>
+                   
 
 
 
 
-                    <div class="list-group-item-heading">
 
-                        <button type="button" class="list-group-item list-group-item-action active">
-                            Kurser
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 1</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 2</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 3</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Kurs 4</button>
-                    </div>
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-info">Sök</button>
-                    </div>
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
         </div>

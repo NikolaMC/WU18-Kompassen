@@ -41,5 +41,14 @@ body {
 }
 
 .paddingtop {
-    padding-top: 8px;
+    padding-top:8px;
 }
+
+.paddingtopbig {
+    padding-top: 24px;
+}
+
+.paddingbot {
+    padding-bottom: 20px;
+}
+
