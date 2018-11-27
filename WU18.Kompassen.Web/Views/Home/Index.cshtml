@@ -2,16 +2,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <div class="container">
     <br />
 
@@ -42,60 +32,48 @@
                 <div class="col-lg-10">
 
 
-
-
-
-
-
-
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>
-                                    
-                                </th>
-                                <th>
-                                    
-                                </th>
-                                <th>
-                                    
-                                </th>
-                                <th>
-                                    
-                                </th>
-                                <th>
-                                    
-                                </th>
-                                <th></th>
+                                <th scope="col">Kursnamn</th>
+                                <th scope="col">Poäng</th>
+                                <th scope="col">Termin</th>
+                                <th scope="col">Aktiv/Inaktiv</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>HT</td>
+                                <td><input type="checkbox" checked="checked"></td>
 
+                                
 
-                            
-                                <tr>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                        
-                                    </td>
-                                    <td>
-                                       
-                                    </td>
-                                    <td>
-                                       
-                                </tr>
-                            
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>VT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>HT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>HT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+
+                          
                         </tbody>
                     </table>
-
 
 
 
@@ -140,14 +118,10 @@
                             Dropdown button
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <ol>
-                                <li>Elev 1</li>
-                                <li>Elev 2</li>
-                                <li>Elev 3</li>
-                                <li>Elev 4</li>
-                            </ol>
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-
                     </div>
 
 
@@ -309,104 +283,6 @@
     </div> <!--Panel End-->
 
 </div><!--container end-->
-<script>
-    $("#panel2").hide();
-    $("#panel3").hide();
-    $("#navKurser").on("click", function () {
-
-
-
-        $("#panel1").show();
-        $("#panel2").hide();
-        $("#panel3").hide();
-
-
-
-
-
-    });
-    $("#navAddNewStudent").on("click", function () {
-
-
-
-        $("#panel2").hide();
-        $("#panel1").hide();
-        $("#panel3").show();
-
-
-    });
-    $("#navStudenter").on("click", function () {
-
-
-
-        $("#panel2").show();
-        $("#panel1").hide();
-        $("#panel3").hide();
-
-
-    });
-
-    /* $("#navNyKurs").on("click", function () {
-
-
-
-         $("#panel3").show();
-         $("#panel1").hide();
-         $("#panel2").hide();
-
-
-     });*/
-
-    $("#kurs_Slider").on("click", function () {
-
-
-
-        $("#panel3").slideToggle();
-
-        var icon = "<span class='glyphicon glyphicon-plus' aria-hidden='true'>";
-        var $this = $(this);
-        $this.toggleClass('open');
-
-        var option1 = icon + ' Lägg till ny kurs';
-        var option2 = ' Avbryt';
-
-        if ($this.hasClass('open')) {
-            $this.html(option1);
-        } else {
-            $this.html(option2);
-        }
-
-    });
-
-    $("#btnClose").on("click", function () {
-
-
-
-        $("#panel3").slideUp();
-
-
-        $("#kurs_Slider").AddClass('open');
-
-        //funkar inte
-
-        if (!$('#kurs_Slider').hasClass('open')) {
-            $('#kurs_Slider').addClass('open');
-        }
-
-
-
-
-    });
-
-
-
-
-
-
-</script>
-
-
-
 
 
 
