@@ -3,6 +3,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <div class="container">
     <br />
 
@@ -12,6 +21,7 @@
     <div class="paddingtop btn-group-toggle btn-group">
 
         <button id="navKurser" class="btn btn-primary" type="submit">Kurser</button>
+        <button id="navAddNewStudent" class="btn btn-primary" type="submit">Ny kurs</button>
         <button id="navStudenter" class="btn btn-primary" type="submit">Studenter</button>
 
     </div>
@@ -32,70 +42,80 @@
                 <div class="col-lg-10">
 
 
-                    <form>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-                        </div>
-
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-                        </div>
-
-
-                        <select class="form-control">
-                            <option>Default select</option>
-                        </select>
-
-                    </form>
-
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-primary">Spara</button>
-                        <button type="submit" class="btn btn-warning">Lägg till</button>
-                    </div>
 
 
 
-                    <br />
-                    <br />
+
+
+
                     <table class="table">
                         <thead>
                             <tr>
-
-                                <th scope="col">Förnamn</th>
-                                <th scope="col">Efternamn</th>
-                                <th scope="col">Personnummer</th>
-                                <th scope="col">Läser</th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    
+                                </th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
 
 
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-
-
-                            </tr>
-                            <tr>
-                                <th scope="row"></th>
-                                <td></td>
-
-
-                            </tr>
+                            
+                                <tr>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                       
+                                    </td>
+                                    <td>
+                                       
+                                </tr>
+                            
                         </tbody>
                     </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
-            <div class="col-lg-4 padding">
-                <button id="kurs_Slider" class="btn btn-primary open"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Lägg till ny kurs</button>
-            </div>
+
         </div>
 
     </div> <!--Panel End-->
@@ -111,61 +131,75 @@
                 <div class="col-lg-10">
 
 
-                    <form>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Namn</label>
-                            <input type="text" class="form-control" id="studenter_namn" placeholder="Example input">
+
+
+                    <span class="badge badge-light">Studenter</span>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <ol>
+                                <li>Elev 1</li>
+                                <li>Elev 2</li>
+                                <li>Elev 3</li>
+                                <li>Elev 4</li>
+                            </ol>
                         </div>
 
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Poäng</label>
-                            <input type="text" class="form-control" id="studenter_poäng" placeholder="Example input">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">År</label>
-                            <input type="text" class="form-control" id="studenter_år" placeholder="Example input">
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Termin</label>
-                            <input type="text" class="form-control" id="studenter_år" placeholder="Example input">
-                        </div>
-
-                        <br />
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Aktiv</label>
-
-                        <br />
-                        <br />
-                        <div class="container">
-                            <div class="col-lg-8">
-                                <div class="form-group">
-                                    <label for="sel1">Studenter</label>
-                                    <select class="form-control" id="">
-                                        <option>Default</option>
-
-                                    </select>
-
-                                </div>
-
-
-                            </div>
-
-                            <div class="col-lg-4 paddingtopbig">
-
-                                <button type="submit" class="btn btn-primary">Registrera</button>
-
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="col-lg-6 padding paddingbot">
-                        <button type="submit" class="btn btn-success">Spara</button>
-                        <button type="submit" class="btn btn-warning">Stäng</button>
                     </div>
+
+
+
+
+
+
+
+                    <span class="badge badge-light">Kurs</span>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <ol>
+                                <li>Kurs 1</li>
+                                <li>Kurs 2</li>
+                                <li>Kurs 3</li>
+                                <li>Kurs 4</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <input type="submit" value="Lägg till" class="btn btn-default" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <input type="submit" value="Avregistrera" class="btn btn-default" />
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,23 +213,15 @@
 
     </div> <!--Panel End-->
 
-    
-        <div id="panel3" class="panel panel-primary">
+
+    <div id="panel3" class="panel panel-primary">
 
 
-            <div class=" panel-heading ">
-                Ny Kurs
-                <div class="pull-right"><Button id="btnClose" class="nobg"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></Button></div>
-            </div>
+        <div class=" panel-heading ">
+            Ny Kurs
+            <div class="pull-right"><Button id="btnClose" class="nobg"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></Button></div>
+        </div>
 
-            
-            
-
-
-
-
-
-        
 
         <br />
 
@@ -237,7 +263,7 @@
 
 
 
-                
+
 
 
 
@@ -276,28 +302,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
         </div>
@@ -316,12 +320,21 @@
         $("#panel2").hide();
         $("#panel3").hide();
 
-      
-     
-            
+
+
+
 
     });
+    $("#navAddNewStudent").on("click", function () {
 
+
+
+        $("#panel2").hide();
+        $("#panel1").hide();
+        $("#panel3").show();
+
+
+    });
     $("#navStudenter").on("click", function () {
 
 
@@ -330,19 +343,19 @@
         $("#panel1").hide();
         $("#panel3").hide();
 
-     
+
     });
 
-   /* $("#navNyKurs").on("click", function () {
+    /* $("#navNyKurs").on("click", function () {
 
 
 
-        $("#panel3").show();
-        $("#panel1").hide();
-        $("#panel2").hide();
-      
+         $("#panel3").show();
+         $("#panel1").hide();
+         $("#panel2").hide();
 
-    });*/
+
+     });*/
 
     $("#kurs_Slider").on("click", function () {
 
@@ -362,7 +375,7 @@
         } else {
             $this.html(option2);
         }
-       
+
     });
 
     $("#btnClose").on("click", function () {
@@ -371,13 +384,23 @@
 
         $("#panel3").slideUp();
 
-      
+
+        $("#kurs_Slider").AddClass('open');
+
+        //funkar inte
+
+        if (!$('#kurs_Slider').hasClass('open')) {
+            $('#kurs_Slider').addClass('open');
+        }
+
+
+
 
     });
 
 
 
-    
+
 
 
 </script>
