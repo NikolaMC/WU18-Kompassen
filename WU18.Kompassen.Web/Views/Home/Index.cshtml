@@ -1,224 +1,236 @@
-﻿
+﻿<div class="container">
 
+    <br />
 
+    <div class="paddingtop btn-group-toggle btn-group">
 
-<div class="container">
+        <button id="navKurser" class="btn btn-primary" type="submit">Kurser</button>
+        <button id="navAddNewStudent" class="btn btn-primary" type="submit">Ny kurs</button>
+        <button id="navStudenter" class="btn btn-primary" type="submit">Studenter</button>
 
+    </div>
 
+    <hr />
 
-
-
-
+    <!-------------------- Panel 1 --------------------->
     <div id="panel1" class="panel panel-primary">
+
         <div class="panel-heading">Kurser</div>
-        <div class="panel-body">Panel Content</div>
+        <br />
 
         <div class="container">
+
             <div class="row">
 
                 <div class="col-lg-10">
 
+                    <table class="table">
 
-                    <form>
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-                        </div>
+                        <thead>
 
+                            <tr>
+                                <th scope="col">Kursnamn</th>
+                                <th scope="col">Poäng</th>
+                                <th scope="col">Termin</th>
+                                <th scope="col">Aktiv/Inaktiv</th>
+                            </tr>
 
-                        <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
-                        </div>
+                        </thead>
 
+                        <tbody id="coursesTable"></tbody>
 
-                        <select class="form-control">
-                            <option>Default select</option>
-                        </select>
+                    </table>
 
-                    </form>
-
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-primary">Spara</button>
-                        <button type="submit" class="btn btn-warning">Lägg till</button>
-                    </div>
-
-
-
-
-                    <div class="list-group-item-heading">
-
-                        <button type="button" class="list-group-item list-group-item-action active">
-                            Kurser
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 1</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 2</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 3</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Kurs 4</button>
-                    </div>
-
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-info">Sök</button>
-                    </div>
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
-        </div>
-
+        </div><!--container end-->
     </div> <!--Panel End-->
-
-
+    <!-------------------- Panel 2 --------------------->
     <div id="panel2" class="panel panel-primary">
+
         <div class="panel-heading">Studenter</div>
-        <div class="panel-body">Panel Content</div>
+
+        <br />
 
         <div class="container">
+
             <div class="row">
 
                 <div class="col-lg-10">
 
+                    <span class="badge badge-light">Studenter</span>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                        </div>
+                    </div>
+
+                    <span class="badge badge-light">Kurs</span>
+
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <ol>
+                                <li>Kurs 1</li>
+                                <li>Kurs 2</li>
+                                <li>Kurs 3</li>
+                                <li>Kurs 4</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-group">
+                        <input type="submit" value="Lägg till" class="btn btn-default" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Avregistrera" class="btn btn-default" />
+                    </div>
+
+                    <br />
+                    <hr />
+                    <br />
 
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="exampleInputEmail1">Namn</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
                         </div>
-
 
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="exampleInputPassword1">Efternamn</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
 
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">År</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
 
-                        <select class="form-control">
-                            <option>Default select</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">SSN</label>
+                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                        </div>
 
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Aktiv</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Lägg till</button>
                     </form>
+                    <br />
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-primary">Spara</button>
-                        <button type="submit" class="btn btn-warning">Lägg till</button>
-                    </div>
-
-
-
-
-                    <div class="list-group-item-heading">
-
-                        <button type="button" class="list-group-item list-group-item-action active">
-                            Kurser
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 1</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 2</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 3</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Kurs 4</button>
-                    </div>
-
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-info">Sök</button>
-                    </div>
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
-        </div>
-
+        </div><!--container end-->
     </div> <!--Panel End-->
 
-
+    <!-------------------- Panel 3 --------------------->
     <div id="panel3" class="panel panel-primary">
-        <div class="panel-heading">Ny Kurs</div>
-        <div class="panel-body">Panel Content</div>
+
+        <div class=" panel-heading ">
+            Ny Kurs
+            <div class="pull-right"><Button id="btnClose" class="nobg"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></Button></div>
+        </div>
+
+        <br />
 
         <div class="container">
             <div class="row">
 
                 <div class="col-lg-10">
 
-
                     <form>
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="formGroupExampleInput">Namn</label>
+                            <input type="text" class="form-control" id="kurser_Namn" placeholder="Example input">
                         </div>
-
 
                         <div class="form-group">
-                            <label for="formGroupExampleInput">Example label</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                            <label for="formGroupExampleInput">Poäng</label>
+                            <input type="text" class="form-control" id="kurser_Poäng" placeholder="Example input">
                         </div>
 
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">År</label>
+                            <input type="text" class="form-control" id="kurser_År" placeholder="Example input">
+                        </div>
 
-                        <select class="form-control">
-                            <option>Default select</option>
-                        </select>
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Termin</label>
+                            <input type="text" class="form-control" id="kurser_Termin" placeholder="Example input">
+                        </div>
 
                     </form>
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-primary">Spara</button>
-                        <button type="submit" class="btn btn-warning">Lägg till</button>
+                    <div class="col-lg-4 padding paddingbot">
+                        <button type="submit" class="btn btn-success">Spara</button>
+
                     </div>
 
+                    <table class="table">
 
+                        <thead>
 
+                            <tr>
+                                <th scope="col">Kursnamn</th>
+                                <th scope="col">Poäng</th>
+                                <th scope="col">Termin</th>
+                                <th scope="col">Aktiv/Inaktiv</th>
+                            </tr>
 
-                    <div class="list-group-item-heading">
+                        </thead>
 
-                        <button type="button" class="list-group-item list-group-item-action active">
-                            Kurser
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 1</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 2</button>
-                        <button type="button" class="list-group-item list-group-item-action">Kurs 3</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Kurs 4</button>
-                    </div>
+                        <tbody>
 
-                    <div class="col-lg-4 padding">
-                        <button type="submit" class="btn btn-info">Sök</button>
-                    </div>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>HT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>VT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>HT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>HT</td>
+                                <td><input type="checkbox" checked="checked"></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
                 </div><!--col-lg-10 end-->
             </div><!--row end-->
-        </div>
-
+        </div><!--container end-->
     </div> <!--Panel End-->
-
 </div><!--container end-->
-<script>
-    $("#panel2").hide();
-    $("#panel3").hide();
-    $("#navKurser").on("click", function () {
 
 
-
-        $("#panel1").show();
-        $("#panel2").hide();
-        $("#panel3").hide();
-        console.log("Nu hände ngt");
-
-    });
-
-    $("#navStudenter").on("click", function () {
-
-
-
-        $("#panel2").show();
-        $("#panel1").hide();
-        $("#panel3").hide();
-        console.log("Nu hände ngt");
-
-    });
-
-    $("#navNyKurs").on("click", function () {
-
-
-
-        $("#panel3").show();
-        $("#panel1").hide();
-        $("#panel2").hide();
-        console.log("Nu hände ngt");
-
-    });
-
-
-</script>
 
