@@ -32,6 +32,7 @@
                                 <th scope="col">Kursnamn</th>
                                 <th scope="col">Poäng</th>
                                 <th scope="col">Termin</th>
+                                <th scope="col">År</th>
                                 <th scope="col">Aktiv/Inaktiv</th>
                             </tr>
 
@@ -45,6 +46,7 @@
             </div><!--row end-->
         </div><!--container end-->
     </div> <!--Panel End-->
+
     <!-------------------- Panel 2 --------------------->
     <div id="panel2" class="panel panel-primary">
 
@@ -151,31 +153,36 @@
 
                 <div class="col-lg-10">
 
-                    <form>
+                    <form id="createCourse">
                         <div class="form-group">
                             <label for="formGroupExampleInput">Namn</label>
-                            <input type="text" class="form-control" id="kurser_Namn" placeholder="Example input">
+                            <input type="text" class="form-control" name="courseName" id="kurser_Namn" placeholder="Namn">
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput">Poäng</label>
-                            <input type="text" class="form-control" id="kurser_Poäng" placeholder="Example input">
+                            <input type="text" class="form-control" name="courseCredits" id="kurser_Poäng" placeholder="Poäng">
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput">År</label>
-                            <input type="text" class="form-control" id="kurser_År" placeholder="Example input">
+                            <input type="text" class="form-control" name="courseYear" id="kurser_År" placeholder="År">
                         </div>
 
                         <div class="form-group">
                             <label for="formGroupExampleInput">Termin</label>
-                            <input type="text" class="form-control" id="kurser_Termin" placeholder="Example input">
+                            <input type="text" class="form-control" name="courseTerm" id="kurser_Termin" placeholder="Termin">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-input" id="kurser_Aktiv">
+                            <label for="formGroupExampleInput">Aktiv</label>
                         </div>
 
                     </form>
 
                     <div class="col-lg-4 padding paddingbot">
-                        <button type="submit" class="btn btn-success">Spara</button>
+                        <button type="submit" class="btn btn-success" id="saveCourse">Spara</button>
 
                     </div>
 
@@ -187,42 +194,13 @@
                                 <th scope="col">Kursnamn</th>
                                 <th scope="col">Poäng</th>
                                 <th scope="col">Termin</th>
+                                <th scope="col">År</th>
                                 <th scope="col">Aktiv/Inaktiv</th>
                             </tr>
 
                         </thead>
 
-                        <tbody>
-
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>HT</td>
-                                <td><input type="checkbox" checked="checked"></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>VT</td>
-                                <td><input type="checkbox" checked="checked"></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>HT</td>
-                                <td><input type="checkbox" checked="checked"></td>
-                            </tr>
-
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>HT</td>
-                                <td><input type="checkbox" checked="checked"></td>
-                            </tr>
-
-                        </tbody>
+                        <tbody id="coursesTable1"></tbody>
 
                     </table>
 
