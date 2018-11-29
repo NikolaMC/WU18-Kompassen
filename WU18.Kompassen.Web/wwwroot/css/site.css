@@ -56,3 +56,20 @@ body {
     background-color:transparent;
     border: hidden;
 }
+
+.dropdownsUl {
+    padding: 7px;
+    list-style: none;
+    
+}
+
+
+.dropdowns {
+    padding: 6px;
+}
+
+.dropdowns:hover {
+    background-color: #f2f2f2;
+    border-radius: 7px; 
+
+}

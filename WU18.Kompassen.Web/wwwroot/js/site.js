@@ -86,3 +86,35 @@ $.get("/api/courses", function (data) {
         $courseTable.append('</tr>');
     });
 });
+
+
+
+var $dropdownListStudents = $("#dropdownListStudents");
+
+$.get("/api/students", function (data) {
+    console.log(data);
+    $.each(data, function (i, students) {
+
+        $dropdownListStudents.append('<li class="dropdowns">' + students.firstName + ' ' +  students.lastName + '</li>');
+
+
+
+    });
+});
+
+
+
+
+var $dropdownListCourses = $("#dropdownListCourses");
+
+$.get("/api/courses", function (data) {
+    console.log(data);
+    $.each(data, function (i, course) {
+    
+        $dropdownListCourses.append('<li class="dropdowns">' + course.name + '</li>');
+        
+
+       
+    });
+});
+
