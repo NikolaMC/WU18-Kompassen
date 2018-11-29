@@ -131,34 +131,41 @@ $("#saveCourse").on("click", function () {
     console.log(course);
     console.log(courseJSON);
 
-    $.post("api/courses", courseJSON, function (newCourse) {
-        $courseTable.append('<tr>');
-        $courseTable.append('<th scope="row">' + newCourse.name + '</th>');
-        $courseTable.append('<td>' + newCourse.credits + '</td>');
-        $courseTable.append('<td>' + newCourse.term + '</td>');
-        $courseTable.append('<td>' + newCourse.year + '</td>');
+    $.ajax({
+        type: "POST",
+        url: "/api/courses",
+        dataType: "json",
+        data: courseJSON,
+        contentType: "application/json",
+        success: function (newCourse) {
+            $courseTable.append('<tr>');
+            $courseTable.append('<th scope="row">' + newCourse.name + '</th>');
+            $courseTable.append('<td>' + newCourse.credits + '</td>');
+            $courseTable.append('<td>' + newCourse.term + '</td>');
+            $courseTable.append('<td>' + newCourse.year + '</td>');
 
-        if (newCourse.active === true) {
-            $courseTable.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
-        } else {
-            $courseTable.append('<td><input type="checkbox" disabled="disabled"></td>');
+            if (newCourse.active === true) {
+                $courseTable.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
+            } else {
+                $courseTable.append('<td><input type="checkbox" disabled="disabled"></td>');
+            }
+
+            $courseTable.append('</tr>');
+
+            $courseTable1.append('<tr>');
+            $courseTable1.append('<th scope="row">' + newCourse.name + '</th>');
+            $courseTable1.append('<td>' + newCourse.credits + '</td>');
+            $courseTable1.append('<td>' + newCourse.term + '</td>');
+            $courseTable1.append('<td>' + newCourse.year + '</td>');
+
+            if (newCourse.active === true) {
+                $courseTable1.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
+            } else {
+                $courseTable1.append('<td><input type="checkbox" disabled="disabled"></td>');
+            }
+
+            $courseTable1.append('</tr>');
         }
-
-        $courseTable.append('</tr>');
-
-        $courseTable1.append('<tr>');
-        $courseTable1.append('<th scope="row">' + newCourse.name + '</th>');
-        $courseTable1.append('<td>' + newCourse.credits + '</td>');
-        $courseTable1.append('<td>' + newCourse.term + '</td>');
-        $courseTable1.append('<td>' + newCourse.year + '</td>');
-
-        if (newCourse.active === true) {
-            $courseTable1.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
-        } else {
-            $courseTable1.append('<td><input type="checkbox" disabled="disabled"></td>');
-        }
-
-        $courseTable1.append('</tr>');
     });
 
 });
