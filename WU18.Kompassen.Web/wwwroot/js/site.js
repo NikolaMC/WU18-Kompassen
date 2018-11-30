@@ -118,7 +118,7 @@ $.get("/api/students", function (data) {
     //console.log(data);
     $.each(data, function (i, students) {
 
-        $dropdownListStudents.append('<li class="dropdowns">' + students.firstName + ' ' +  students.lastName + '</li>');
+        $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' +  students.lastName + '</a></li>');
 
 
 
@@ -163,21 +163,27 @@ $.get("/api/courses", function (courses) {
 
         //loopa igenom varje student i varje kurs (data[i])
         studentcourse.forEach(function (linkedStudents) {
-
             $panelGenerator.append('<li class="list-group-item">' + linkedStudents.firstName + '</li>');
         });
 
             $panelGenerator.append('</ul>');
-
        
        
 
     }
-    
-                            
+                           
     $panelGenerator.append('<br />');   
 
    
+});
+/**
+ * Registrerar en click eventlister på document dynamiskt vilket betyder att ni inte behöver
+ * initiera click eventet efter varje gång en ny lista skapas, den här eventlistenern
+ * kommer köras vid varje click även om listan i sig ändras.
+*/
+$(document).on("click", "li.dropdowns a", function (e) {
+    e.preventDefault() // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
+    alert("Du klickade på " + $(this).html());
 });
 
 
