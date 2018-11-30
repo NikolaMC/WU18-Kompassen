@@ -118,12 +118,14 @@ $.get("/api/students", function (data) {
     //console.log(data);
     $.each(data, function (i, students) {
 
-        $dropdownListStudents.append('<li class="dropdowns">' + students.firstName + ' ' +  students.lastName + '</li>');
+        $dropdownListStudents.append('<li id="li' + [i] + '" class="dropdowns">' + students.firstName + ' ' +  students.lastName + '</li>');
 
 
 
     });
 });
+
+$document.on('click',"li.dropdowns a",)
 
 var $dropdownListCourses = $("#dropdownListCourses");
 
@@ -189,40 +191,3 @@ $.get("/api/courses", function (courses) {
 
 
 
-
-// Post data from Ny Kurs inputs to database
-$("#saveCourse").on("click", function () {
-
-    if ($($courseActive).is(":checked")) {
-        activeTrue = true;
-    } else {
-        activeTrue = false;
-    }
-    
-    var course = {
-        name: $courseName.val(),
-        term: $courseTerm.val(),
-        year: $courseYear.val(),
-        credits: $coursePoints.val(),
-        active: activeTrue
-    };
-
-    var courseJSON = JSON.stringify(course);
-
-    console.log(course);
-
-    $.ajax({
-        type: "POST",
-        url: "/api/courses",
-        dataType: "json",
-        data: courseJSON,
-        success: function (newCourse) {
-            appendCourse(newCourse);
-            $("#createCourse").each(function () {
-                this.reset();
-            });
-        }
-        
-    });
-
-});
