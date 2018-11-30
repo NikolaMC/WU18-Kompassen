@@ -69,8 +69,9 @@ $("#btnClose").on("click", function () {
 // Get data from /api/courses database and output it into the table
 var $courseTable = $("#coursesTable");
 
+
 $.get("/api/courses", function (data) {
-    console.log(data);
+    //console.log(data);
     $.each(data, function (i, course) {
         $courseTable.append('<tr>');
         $courseTable.append('<th scope="row">' + course.name + '</th>');
@@ -88,11 +89,33 @@ $.get("/api/courses", function (data) {
 });
 
 
+var $coursesTableNewCourse = $("#coursesTableNewCourse");
+
+
+$.get("/api/courses", function (data) {
+    //console.log(data);
+    $.each(data, function (i, course) {
+        $coursesTableNewCourse.append('<tr>');
+        $coursesTableNewCourse.append('<th scope="row">' + course.name + '</th>');
+        $coursesTableNewCourse.append('<td>' + course.credits + '</td>');
+        $coursesTableNewCourse.append('<td>' + course.term + '</td>');
+
+        if (course.active === true) {
+            $coursesTableNewCourse.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
+        } else {
+            $coursesTableNewCourse.append('<td><input type="checkbox" disabled="disabled"></td>');
+        }
+
+        $coursesTableNewCourse.append('</tr>');
+    });
+});
+
+
 
 var $dropdownListStudents = $("#dropdownListStudents");
 
 $.get("/api/students", function (data) {
-    console.log(data);
+    //console.log(data);
     $.each(data, function (i, students) {
 
         $dropdownListStudents.append('<li class="dropdowns">' + students.firstName + ' ' +  students.lastName + '</li>');
@@ -102,19 +125,65 @@ $.get("/api/students", function (data) {
     });
 });
 
-
-
-
 var $dropdownListCourses = $("#dropdownListCourses");
 
 $.get("/api/courses", function (data) {
     console.log(data);
     $.each(data, function (i, course) {
-    
-        $dropdownListCourses.append('<li class="dropdowns">' + course.name + '</li>');
-        
 
-       
+        $dropdownListCourses.append('<li class="dropdowns">' + course.name + '</li>');
+
+
+
     });
 });
+
+
+
+var $panelGenerator = $("#panelGenerator");
+
+
+
+$.get("/api/courses", function (courses) {
+    //console.log(data);
+
+    var looplength = courses.length;
+    for (i = 0; i < looplength; i++) {
+
+     
+
+        $panelGenerator.append('<ul class="list-group">');
+        $panelGenerator.append('<li class="list-group-item active">' + courses[i].name + '</li>');
+
+
+        
+
+        //studentlista för data[i]
+        var studentcourse = courses[i].students;
+
+        //loopa igenom varje student i varje kurs (data[i])
+        studentcourse.forEach(function (linkedStudents) {
+
+            $panelGenerator.append('<li class="list-group-item">' + linkedStudents.firstName + '</li>');
+        });
+
+            $panelGenerator.append('</ul>');
+
+       
+       
+
+    }
+    
+                            
+    $panelGenerator.append('<br />');   
+
+   
+});
+
+
+
+
+
+
+
 
