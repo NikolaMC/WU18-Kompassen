@@ -78,8 +78,8 @@ var activeTrue;
 
 function appendCourse(courseNew) {
 
-    var activeChecked = '<input type="checkbox" checked="checked" disabled="disabled"></td>';
-    var activeUnchecked = '<input type="checkbox" disabled="disabled">';
+    var activeChecked = '<input type="checkbox" checked="checked" disabled="disabled" id="courseActive' + courseNew.id + '"></td>';
+    var activeUnchecked = '<input type="checkbox" disabled="disabled" id="courseActive' + courseNew.id + '"></td>';
     var activeInput;
 
     if (courseNew.active) {
@@ -89,13 +89,16 @@ function appendCourse(courseNew) {
     }
 
     $courseTable.append(
-        '<tr>' +
-            '<th scope="row">' + courseNew.name + '</th>' +
-            '<td>' + courseNew.credits + '</td>' +
-            '<td>' + courseNew.term + '</td>' +
-            '<td>' + courseNew.year + '</td>' +
+        '<tr data-id="' + courseNew.id + '">' +
+            '<th scope="row"><span class="noedit courseName">' + courseNew.name + '</span><input class="edit courseName" /></th>' +
+            '<td><span class="noedit courseCredits">' + courseNew.credits + '</span><input class="edit courseCredits" /></td>' +
+            '<td><span class="noedit courseTerm">' + courseNew.term + '</span><input class="edit courseTerm" /></td>' +
+            '<td><span class="noedit courseYear">' + courseNew.year + '</span><input class="edit courseYear" /></td>' +
             '<td>' + activeInput + '</td>' +
-            '<td><button data-id="' + courseNew.id + '" class="remove btn btn-danger">Ta bort</button></td>' +
+            '<td><button data-id="' + courseNew.id + '" class="editCourse noedit">Ändra</button>' +
+            '<button data-id="' + courseNew.id + '" class="saveEdit edit">Spara</button>' +
+            '<button data-id="' + courseNew.id + '" class="cancelEdit edit">Avbryt</button>' +
+            '<button data-id="' + courseNew.id + '" class="remove">X</button></td>' +
         '</tr>'
     );  
 
@@ -186,4 +189,78 @@ $courseTable.on("click", ".remove", function () {
 
         }
     });
+});
+
+$courseTable.on("click", ".editCourse", function () {
+
+    var $tr = $(this).closest("tr");
+    var $btnId = $(this).attr("data-id");
+    $tr.find("input.courseName").val($tr.find("span.courseName").html());
+    $tr.find("input.courseCredits").val($tr.find("span.courseCredits").html());
+    $tr.find("input.courseTerm").val($tr.find("span.courseTerm").html());
+    $tr.find("input.courseYear").val($tr.find("span.courseYear").html());
+    $tr.find("#courseActive" + $btnId).removeAttr("disabled");
+    $tr.addClass("edit");
+
+});
+
+$courseTable.on("click", ".cancelEdit", function () {
+    var $tr = $(this).closest("tr");
+    var $btnId = $(this).attr("data-id");
+    $tr.removeClass("edit");
+    $tr.find("#courseActive" + $btnId).attr("disabled", "disabled");
+});
+
+$courseTable.on("click", ".saveEdit", function () {
+
+    var $tr = $(this).closest("tr");
+    var $btnId = $(this).attr("data-id");
+
+    var activeControl;
+
+    if ($("#courseActive" + $btnId).is(":checked")) {
+        activeControl = true;
+    } else {
+        activeControl = false;
+    }
+
+    var course = {
+        id: $tr.attr("data-id"),
+        name: $tr.find("input.courseName").val(),
+        credits: $tr.find("input.courseCredits").val(),
+        term: $tr.find("input.courseTerm").val(),
+        year: $tr.find("input.courseYear").val(),
+        active: activeControl
+    };
+
+    var courseJSON = JSON.stringify(course);
+
+    console.log(course);
+    console.log(courseJSON);
+
+    $.ajax({
+        type: "PUT",
+        url: "/api/courses/" + $tr.attr("data-id"),
+        dataType: "json",
+        data: courseJSON,
+        contentType: "application/json",
+        success: function (newCourse) {
+            $courseTable.empty();
+            $courseTable1.empty();
+
+            $.get("/api/courses", function (data) {
+
+                console.log(data);
+                $.each(data, function (i, course) {
+                    appendCourse(course);
+                });
+
+            });
+        }
+
+    });
+
+    $tr.removeClass("edit");
+    $tr.find("#courseActive" + $btnId).attr("disabled", "disabled");
+
 });

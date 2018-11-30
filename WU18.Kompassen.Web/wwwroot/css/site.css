@@ -56,3 +56,19 @@ body {
     background-color:transparent;
     border: hidden;
 }
+
+tr .edit, button.edit {
+    display: none;
+}
+
+tr.edit .edit {
+    display: initial;
+}
+
+tr.edit .noedit {
+    display: none;
+}
+
+input.edit {
+    width: auto;
+}
