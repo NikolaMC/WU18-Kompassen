@@ -60,16 +60,28 @@ body {
 .dropdownsUl {
     padding: 7px;
     list-style: none;
-    
+    font-size: 16px;
 }
 
 
 .dropdowns {
-    padding: 6px;
+    border: 0;
+    border-radius: 0.25rem;
+    background: #f6f5f5;
+    color: black;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    margin: 0.25rem;
+    cursor: pointer;
 }
 
+
 .dropdowns:hover {
-    background-color: #f2f2f2;
+    background-color: #e8dbdb;
     border-radius: 7px; 
 
 }

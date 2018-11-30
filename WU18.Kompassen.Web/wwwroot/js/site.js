@@ -187,3 +187,42 @@ $.get("/api/courses", function (courses) {
 
 
 
+
+
+
+// Post data from Ny Kurs inputs to database
+$("#saveCourse").on("click", function () {
+
+    if ($($courseActive).is(":checked")) {
+        activeTrue = true;
+    } else {
+        activeTrue = false;
+    }
+    
+    var course = {
+        name: $courseName.val(),
+        term: $courseTerm.val(),
+        year: $courseYear.val(),
+        credits: $coursePoints.val(),
+        active: activeTrue
+    };
+
+    var courseJSON = JSON.stringify(course);
+
+    console.log(course);
+
+    $.ajax({
+        type: "POST",
+        url: "/api/courses",
+        dataType: "json",
+        data: courseJSON,
+        success: function (newCourse) {
+            appendCourse(newCourse);
+            $("#createCourse").each(function () {
+                this.reset();
+            });
+        }
+        
+    });
+
+});
