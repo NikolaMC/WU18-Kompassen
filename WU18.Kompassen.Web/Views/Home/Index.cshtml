@@ -10,221 +10,115 @@
 
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <hr />
 
-   
-    <!-------------------- Panel 2 --------------------->
-    <div id="panel2" class="panel panel-primary">
+    <!-------------------- Panel 1 --------------------->
+    <div id="panel1" class="panel panel-primary">
 
-        <div class="panel-heading">Studenter</div>
-
+        <div class="panel-heading">Kurser</div>
         <br />
 
         <div class="container">
 
             <div class="row">
 
-                <div class="col-lg-12">
+                <div class="col-lg-10">
 
+                    <table class="table">
 
+                        <thead>
 
+                            <tr>
+                                <th scope="col">Kursnamn</th>
+                                <th scope="col">Poäng</th>
+                                <th scope="col">Termin</th>
+                                <th scope="col">År</th>
+                                <th scope="col">Aktiv/Inaktiv</th>
+                                <!--<th scope="col">Ändra/Ta bort</th>-->
+                            </tr>
 
+                        </thead>
 
-                    <div class="container">
+                        <tbody id="coursesTable"></tbody>
 
-                        <div class="col-lg-6">
-                            <div class="row">
+                    </table>
 
+                </div><!--col-lg-10 end-->
+            </div><!--row end-->
+        </div><!--container end-->
+    </div> <!--Panel End-->
 
-                                <h2>Lägg till student i en kurs</h2>
-                                <br />
-                                <div class="text-info">Välj student från listan som du vill lägga till i en kurs.</div>
-                                <br />
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonStudents" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>       Studenter
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <ul id="dropdownListStudents" class="dropdownsUl"></ul>
-                                    </div>
-                                </div>
+    <!-------------------- Panel 3 --------------------->
+    <div id="panel3" class="panel panel-primary">
 
+        <div class=" panel-heading ">
+            Ny Kurs
+            <div class="pull-right"><Button id="btnClose" class="nobg"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></Button></div>
+        </div>
 
+        <br />
 
-                                <br />
+        <div class="container">
+            <div class="row">
 
+                <div class="col-lg-10">
 
-                                <div class="text-info">Välj kurs från listan som du vill lägga till en student i.</div>
-                                <br />
-                                <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCourses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>    Kurser
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <ul id="dropdownListCourses" class="dropdownsUl"></ul>
-                                    </div>
-                                </div>
-
-                                <br />
-                                <br />
-
-                                <div class="form-group">
-                                    <input id="studentsAbort" type="submit" value="Avbryt" class="btn btn-secondary" />
-                                </div>
-                                <div class="form-group">
-                                    
-
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addStudent">
-                                      Registrera
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Är du säker att du vill lägga till studenten i kursen?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
-                                                    <button type="button" id="addStudentsEventButton" class="btn btn-warning">Registrera</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-
-                                <div class="form-group">
-                                    
-
-
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeStudent">
-                                        Avregistrera
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="removeStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Är du säker att du vill avregistrera studenten från kursen?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
-                                                    <button type="button" class="btn btn-danger">Avregistrera</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                    <form id="createCourse">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Namn</label>
+                            <input type="text" class="form-control" name="courseName" id="kurser_Namn" placeholder="Namn">
                         </div>
 
-
-
-
-                        <div class="container">
-
-                            <div class="col-lg-4">
-
-                                <h2>Skapa ny student</h2>
-                                <div class="text-info">Skriv in studentens information och tryck sedan på lägg till för att lägga till den nya studenten i systemet.</div>
-                                <br />
-
-
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Namn</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Studentens namn">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Efternamn</label>
-                                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Studentens efternamn">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">År</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Studentens födelseår">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">SSN</label>
-                                        <input type="email" class="form-control" id="exampleInputPassword2" placeholder="Studentens SSN">
-                                    </div>
-
-                                    <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Aktiv</label>
-                                        <div class="text-info">Ange om studenten ska vara aktiv eller inaktiv.</div>
-                                    </div>
-                                    <br />
-                                    <button type="submit" class="btn btn-success">Lägg till</button>
-                                </form>
-
-                                <br />
-
-                            </div>
-
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Poäng</label>
+                            <input type="text" class="form-control" name="courseCredits" id="kurser_Poäng" placeholder="Poäng">
                         </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">År</label>
+                            <input type="text" class="form-control" name="courseYear" id="kurser_År" placeholder="År">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Termin</label>
+                            <input type="text" class="form-control" name="courseTerm" id="kurser_Termin" placeholder="Termin">
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="checkbox" class="form-check-input" id="kurser_Aktiv">
+                            <label for="formGroupExampleInput">Aktiv</label>
+                        </div>
+
+                    </form>
+
+                    <div class="col-lg-4 padding paddingbot">
+                        <button type="submit" class="btn btn-success" id="saveCourse">Spara</button>
 
                     </div>
 
-                    <br />
-                    <div class="col-lg-10"><hr /></div>
-                    <br />
+                    <table class="table">
 
+                        <thead>
 
-                    <div class="container containerGrid">
-                        <div class="col-lg-4" id="panelGenerator">
+                            <tr>
+                                <th scope="col">Kursnamn</th>
+                                <th scope="col">Poäng</th>
+                                <th scope="col">Termin</th>
+                                <th scope="col">År</th>
+                                <th scope="col">Aktiv/Inaktiv</th>
+                            </tr>
 
-         
-                            </div>
-                        </div>
+                        </thead>
 
-                    </div> <!--end of Container     -->
+                        <tbody id="coursesTable1"></tbody>
 
-                </div> <!--end of Container     col-lg-12 -->
+                    </table>
 
-
-                    </div><!--col-lg-12 end-->
-                </div><!--row end-->
-                        </div><!--container end-->
-                 
-                
-                
+                </div><!--col-lg-10 end-->
+            </div><!--row end-->
+        </div><!--container end-->
+    </div> <!--Panel End-->
+</div><!--container end-->
 
 
 
