@@ -1,89 +1,17 @@
-﻿$("#panel2").hide();
-$("#panel3").hide();
-$("#navKurser").on("click", function () {
-
-    $("#panel1").show();
-    $("#panel2").hide();
-    $("#panel3").hide();
-
-});
-
-$("#navAddNewStudent").on("click", function () {
-
-    $("#panel2").hide();
-    $("#panel1").hide();
-    $("#panel3").show();
-
-});
-
-$("#navStudenter").on("click", function () {
-
-    $("#panel2").show();
-    $("#panel1").hide();
-    $("#panel3").hide();
-
-});
-
-/* $("#navNyKurs").on("click", function () {
-
-     $("#panel3").show();
-     $("#panel1").hide();
-     $("#panel2").hide();
-
- });*/
-
-$("#kurs_Slider").on("click", function () {
-
-    $("#panel3").slideToggle();
-
-    var icon = "<span class='glyphicon glyphicon-plus' aria-hidden='true'>";
-    var $this = $(this);
-    $this.toggleClass('open');
-
-    var option1 = icon + ' Lägg till ny kurs';
-    var option2 = ' Avbryt';
-
-    if ($this.hasClass('open')) {
-        $this.html(option1);
-    } else {
-        $this.html(option2);
-    }
-
-});
-
-$("#btnClose").on("click", function () {
-
-    $("#panel3").slideUp();
-
-    $("#kurs_Slider").AddClass('open');
-
-    //funkar inte
-
-    if (!$('#kurs_Slider').hasClass('open')) {
-        $('#kurs_Slider').addClass('open');
-    }
-
-});
+﻿
 
 
 // Get data from /api/courses database and output it into the table
 var $courseTable = $("#coursesTable");
-var $courseTable1 = $("#coursesTable1");
-var $courseName = $("#kurser_Namn");
-var $coursePoints = $("#kurser_Poäng");
-var $courseYear = $("#kurser_År");
-var $courseTerm = $("#kurser_Termin");
-var $courseActive = $("#kurser_Aktiv");
-var activeTrue;
+
 
 $.get("/api/courses", function (data) {
-    console.log(data);
+    //console.log(data);
     $.each(data, function (i, course) {
         $courseTable.append('<tr>');
         $courseTable.append('<th scope="row">' + course.name + '</th>');
         $courseTable.append('<td>' + course.credits + '</td>');
         $courseTable.append('<td>' + course.term + '</td>');
-        $courseTable.append('<td>' + course.year + '</td>');
 
         if (course.active === true) {
             $courseTable.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
@@ -92,80 +20,318 @@ $.get("/api/courses", function (data) {
         }
 
         $courseTable.append('</tr>');
+    });
+});
 
-        $courseTable1.append('<tr>');
-        $courseTable1.append('<th scope="row">' + course.name + '</th>');
-        $courseTable1.append('<td>' + course.credits + '</td>');
-        $courseTable1.append('<td>' + course.term + '</td>');
-        $courseTable1.append('<td>' + course.year + '</td>');
+
+var $coursesTableNewCourse = $("#coursesTableNewCourse");
+
+
+$.get("/api/courses", function (data) {
+    //console.log(data);
+    $.each(data, function (i, course) {
+        $coursesTableNewCourse.append('<tr>');
+        $coursesTableNewCourse.append('<th scope="row">' + course.name + '</th>');
+        $coursesTableNewCourse.append('<td>' + course.credits + '</td>');
+        $coursesTableNewCourse.append('<td>' + course.term + '</td>');
 
         if (course.active === true) {
-            $courseTable1.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
+            $coursesTableNewCourse.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
         } else {
-            $courseTable1.append('<td><input type="checkbox" disabled="disabled"></td>');
+            $coursesTableNewCourse.append('<td><input type="checkbox" disabled="disabled"></td>');
         }
 
-        $courseTable1.append('</tr>');
+        $coursesTableNewCourse.append('</tr>');
     });
 });
 
-// Post data from Ny Kurs inputs to database
-$("#saveCourse").on("click", function () {
 
-    if ($($courseActive).is(":checked")) {
-        activeTrue = true;
-    } else {
-        activeTrue = false;
+
+var $dropdownListStudents = $("#dropdownListStudents");
+
+$.get("/api/students", function (data) {
+    //console.log(data);
+    $.each(data, function (i, students) {
+
+        $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' + students.lastName + '</a></li>');
+
+
+
+    });
+});
+
+var $dropdownListCourses = $("#dropdownListCourses");
+
+$.get("/api/courses", function (data) {
+    console.log(data);
+    $.each(data, function (i, course) {
+
+        $dropdownListCourses.append('<li class="dropdownsCourses dropdownCourses"><a href="#">' + course.name + '</a></li>');
+
+
+
+    });
+});
+
+
+
+var $panelGenerator = $("#panelGenerator");
+
+
+function getStudentsAndCourses(courses) {
+    var looplength = courses.length;
+    for (i = 0; i < looplength; i++) {
+
+
+
+        $panelGenerator.append('<ul class="list-group">');
+        $panelGenerator.append('<li class="list-group-item active">' + courses[i].name + '</li>');
+
+
+
+
+        //studentlista för data[i]
+        var studentcourse = courses[i].students;
+
+        //loopa igenom varje student i varje kurs (data[i])
+        studentcourse.forEach(function (linkedStudents) {
+            $panelGenerator.append('<li class="list-group-item">' + linkedStudents.firstName + '</li>');
+        });
+
+        $panelGenerator.append('</ul>');
+
+
+
     }
-    
-    var course = {
-        name: $courseName.val(),
-        term: $courseTerm.val(),
-        year: $courseYear.val(),
-        credits: $coursePoints.val(),
-        active: activeTrue
-    };
 
-    var courseJSON = JSON.stringify(course);
+    $panelGenerator.append('<br />');
+}
 
-    console.log(course);
-    console.log(courseJSON);
+$.get("/api/courses", function (courses) {
+    getStudentsAndCourses(courses);
 
-    $.ajax({
-        type: "POST",
-        url: "/api/courses",
-        dataType: "json",
-        data: courseJSON,
-        contentType: "application/json",
-        success: function (newCourse) {
-            $courseTable.append('<tr>');
-            $courseTable.append('<th scope="row">' + newCourse.name + '</th>');
-            $courseTable.append('<td>' + newCourse.credits + '</td>');
-            $courseTable.append('<td>' + newCourse.term + '</td>');
-            $courseTable.append('<td>' + newCourse.year + '</td>');
-
-            if (newCourse.active === true) {
-                $courseTable.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
-            } else {
-                $courseTable.append('<td><input type="checkbox" disabled="disabled"></td>');
-            }
-
-            $courseTable.append('</tr>');
-
-            $courseTable1.append('<tr>');
-            $courseTable1.append('<th scope="row">' + newCourse.name + '</th>');
-            $courseTable1.append('<td>' + newCourse.credits + '</td>');
-            $courseTable1.append('<td>' + newCourse.term + '</td>');
-            $courseTable1.append('<td>' + newCourse.year + '</td>');
-
-            if (newCourse.active === true) {
-                $courseTable1.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
-            } else {
-                $courseTable1.append('<td><input type="checkbox" disabled="disabled"></td>');
-            }
-
-            $courseTable1.append('</tr>');
-        }
-    });
 
 });
+
+var studentIsSelceted = false; 
+var courseIsSelceted = false; 
+var selectedCourseNameStudentsArray;
+
+
+
+
+$(document).on("click", "li.dropdownCourses a", function (e) {
+
+    e.preventDefault() // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
+    var clickedCoursesName = $(this).html();
+    console.log(clickedCoursesName);
+    $('#displaySelectedStudent').empty();
+
+    $.get("/api/courses", function (courses) {
+
+        var looplength = courses.length;
+
+        for (i = 0; i < looplength; i++) {
+
+            var studentcourseCourse = courses;
+            studentcourseCourse.forEach(function (studentCoursesName) {
+
+                if (clickedCoursesName == courses[i].name) {
+                    courseIsSelceted = true;
+                    console.log(courses[i]);
+
+                   
+
+                    if (courseIsSelceted == true) {
+                        $('#dropdownMenuButtonCourses').empty();
+                        $('#dropdownMenuButtonCourses').append(clickedCoursesName);
+                    };
+
+
+
+                    selectedCourseId = courses[i].id;
+
+                    console.log(selectedCourseId);
+
+
+
+
+                    
+                }
+
+
+            });
+
+        };
+    var studentIsSelceted = false; 
+
+       
+    });
+   
+
+
+});
+
+
+
+$(document).on("click", "li.dropdowns a", function (e) {
+    e.preventDefault() // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
+    var clickedStudentName = $(this).html();
+    $('#displaySelectedStudent').empty();
+
+    $.get("/api/courses", function (courses) {
+    
+
+    var looplength = courses.length;
+    for (i = 0; i < looplength; i++) {
+
+
+
+
+        //studentlista för data[i]
+        var studentcourse = courses[i].students;
+
+        //loopa igenom varje student i varje kurs (data[i])
+        studentcourse.forEach(function (linkedStudents) {
+
+
+
+            if (clickedStudentName == linkedStudents.firstName || linkedStudents.lastName) {
+                studentIsSelceted = true;
+            }
+
+
+        });
+
+       
+       
+    }
+
+
+     
+
+        if (studentIsSelceted == true) {
+            $('#dropdownMenuButtonStudents').empty();
+            $('#dropdownMenuButtonStudents').append(clickedStudentName);
+
+            
+
+            $('#addStudentsEventButton').on("click", function (e) {
+                console.log('************************************************');
+                console.log('************************************************');
+                console.log(clickedStudentName + ' är vald');
+
+                $.get("/api/searchstudents/e", function (students) {
+                  console.log(students);
+
+                    $.each(students, function (i, data) {
+
+                        var studentSearchedName = data.firstName + ' ' + data.lastName;
+
+                        if (studentSearchedName == clickedStudentName) {
+                            console.log(studentSearchedName);
+                            var studentId = data.id;
+                            var studentFirstName = data.firstName;
+                            var studentLastName = data.lastName;
+                            var studentSSN = data.ssn;
+                            var studentActive = data.active;
+
+
+                            var postStudent = {
+                                
+                                courseId: selectedCourseId,
+                                 studentId: studentId,
+                                
+                            }
+                        
+
+                            var courseJSON = JSON.stringify(postStudent);
+                            console.log('Loggar courseJSON: ' + courseJSON)
+
+                            console.log('Student som ska POSTas: ' + postStudent);
+
+                            $.ajax({
+                                type: "POST",
+                                contentType: 'application/json',
+                                url: "/api/studentcourses/",
+                                dataType: "json",
+                                data: courseJSON,
+                                success: function (Course) {
+                                    alert('Det funkade');
+
+                                    $("#panelGenerator").empty();
+
+                                    $.get("/api/courses", function (courses) {
+                                        getStudentsAndCourses(courses);
+                                        resetDropdowns();
+                                       
+                                        
+
+                                    });
+
+
+
+                                }
+
+                            });
+
+
+
+
+
+
+
+
+                        }
+
+
+
+                    });
+                });
+
+       
+                   
+
+
+            });
+
+
+
+        }
+
+        var studentIsSelceted = false; 
+});
+});
+
+
+
+function resetDropdowns() {
+    
+        $('#dropdownMenuButtonStudents').empty();
+        $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+        $('#dropdownMenuButtonCourses').empty();
+        $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+   
+
+}
+
+
+
+$('#studentsAbort').on("click", function (e) {
+    $('#dropdownMenuButtonStudents').empty();
+    $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+    $('#dropdownMenuButtonCourses').empty();
+    $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+});
+
+
+
+
+
+
+
+   
