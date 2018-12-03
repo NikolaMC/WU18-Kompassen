@@ -91,7 +91,7 @@
                                 <div class="text-info">Välj student från listan som du vill lägga till i en kurs.</div>
                                 <br />
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonStudents" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>       Studenter
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -99,13 +99,15 @@
                                     </div>
                                 </div>
 
+
+
                                 <br />
 
 
                                 <div class="text-info">Välj kurs från listan som du vill lägga till en student i.</div>
                                 <br />
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonCourses" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>    Kurser
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -115,12 +117,72 @@
 
                                 <br />
                                 <br />
+
                                 <div class="form-group">
-                                    <input type="submit" value="Lägg till" class="btn btn-warning" />
+                                    <input id="studentsAbort" type="submit" value="Avbryt" class="btn btn-secondary" />
+                                </div>
+                                <div class="form-group">
+                                    
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addStudent">
+                                      Lägg till
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="addStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Är du säker att du vill lägga till studenten i kursen?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+                                                    <button type="button" id="addStudentsEventButton" class="btn btn-warning">Lägg till</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="submit" value="Avregistrera" class="btn btn-danger" />
+                                    
+
+
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#removeStudent">
+                                        Avregistrera
+                                    </button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="removeStudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Är du säker att du vill avregistrera studenten från kursen?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+                                                    <button type="button" class="btn btn-danger">Avregistrera</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
