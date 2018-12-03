@@ -1,1 +1,99 @@
 ﻿
+
+.padding {
+    padding: 10px;
+}
+
+.paddingtop {
+    padding-top:8px;
+}
+
+.paddingtopbig {
+    padding-top: 24px;
+}
+
+.paddingbot {
+    padding-bottom: 20px;
+}
+
+.nobg {
+    background-color:transparent;
+    border: hidden;
+}
+
+.dropdownsUl {
+    padding: 7px;
+    list-style: none;
+    font-size: 16px;
+}
+
+
+.dropdowns {
+    border: 0;
+    border-radius: 0.25rem;
+    background: #f6f5f5;
+    color: black;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+   
+    white-space: nowrap;
+    text-decoration: none;
+    padding-top:5px;
+    padding-left:5px;
+    padding-bottom:5px;
+    margin: 0.25rem;
+}
+.dropdowns a {
+                  text-decoration: none;
+              }
+
+    .dropdowns a:hover {
+      color: white;
+    }
+
+
+.dropdowns:hover {
+    background-color: #e8dbdb;
+    border-radius: 7px;
+
+}
+.containerGrid {
+    display: grid;
+    
+    grid-gap: 10px;
+}
+
+
+
+
+.dropdownsCourses {
+    border: 0;
+    border-radius: 0.25rem;
+    background: #f6f5f5;
+    color: black;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    white-space: nowrap;
+    text-decoration: none;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    margin: 0.25rem;
+}
+
+.dropdownsCourses a {
+    text-decoration: none;
+}
+
+    .dropdownsCourses a:hover {
+        color: white;
+    }
+
+
+.dropdownsCourses:hover {
+    background-color: #e8dbdb;
+    border-radius: 7px;
+}
+
+
+
