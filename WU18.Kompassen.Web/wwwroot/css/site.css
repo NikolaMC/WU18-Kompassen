@@ -89,6 +89,35 @@
         color: white;
     }
 
+.nobg {
+    background-color:transparent;
+    border: hidden;
+}
+
+tr .edit, button.edit, tr.edit .noedit {
+    display: none;
+}
+
+tr.edit .edit {
+    display: initial;
+}
+
+input.edit {
+    width: 50px;
+}
+
+.courseName {
+    min-width: 200px;
+}
+
+.buttonContainer {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn {
+    margin: 1px;
+}
 
 .dropdownsCourses:hover {
     background-color: #e8dbdb;
