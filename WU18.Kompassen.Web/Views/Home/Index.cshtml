@@ -126,7 +126,7 @@
 
                                     <!-- Button trigger modal -->
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#addStudent">
-                                      Lägg till
+                                      Registrera
                                     </button>
 
                                     <!-- Modal -->
@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
-                                                    <button type="button" id="addStudentsEventButton" class="btn btn-warning">Lägg till</button>
+                                                    <button type="button" id="addStudentsEventButton" class="btn btn-warning">Registrera</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -203,27 +203,28 @@
                                 <form>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Namn</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Studentens namn">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Efternamn</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Studentens efternamn">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">År</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Enter email">
+                                        <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Studentens födelseår">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">SSN</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                        <input type="email" class="form-control" id="exampleInputPassword2" placeholder="Studentens SSN">
                                     </div>
 
                                     <div class="form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                         <label class="form-check-label" for="exampleCheck1">Aktiv</label>
+                                        <div class="text-info">Ange om studenten ska vara aktiv eller inaktiv.</div>
                                     </div>
                                     <br />
                                     <button type="submit" class="btn btn-success">Lägg till</button>

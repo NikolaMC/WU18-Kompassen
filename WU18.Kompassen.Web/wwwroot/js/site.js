@@ -143,10 +143,7 @@ $.get("/api/courses", function (data) {
 var $panelGenerator = $("#panelGenerator");
 
 
-
-$.get("/api/courses", function (courses) {
-    //console.log(data);
-
+function getStudentsAndCourses(courses) {
     var looplength = courses.length;
     for (i = 0; i < looplength; i++) {
 
@@ -173,6 +170,10 @@ $.get("/api/courses", function (courses) {
     }
 
     $panelGenerator.append('<br />');
+}
+
+$.get("/api/courses", function (courses) {
+    getStudentsAndCourses(courses);
 
 
 });
@@ -323,10 +324,21 @@ $(document).on("click", "li.dropdowns a", function (e) {
                                 success: function (Course) {
                                     alert('Det funkade');
 
+                                    $("#panelGenerator").empty();
+
+                                    $.get("/api/courses", function (courses) {
+                                        getStudentsAndCourses(courses);
+                                        resetDropdowns();
+                                       
+                                        
+
+                                    });
+
+
+
                                 }
 
                             });
-
 
 
 
@@ -351,9 +363,24 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
 
         }
+
         var studentIsSelceted = false; 
 });
 });
+
+
+
+function resetDropdowns() {
+    
+        $('#dropdownMenuButtonStudents').empty();
+        $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+        $('#dropdownMenuButtonCourses').empty();
+        $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+   
+
+}
 
 
 
@@ -365,9 +392,6 @@ $('#studentsAbort').on("click", function (e) {
     $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
 
 });
-
-
-
 
 
 
