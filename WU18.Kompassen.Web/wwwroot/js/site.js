@@ -10,6 +10,7 @@
 $('#addStudentSuccessMessage').hide();
 $('#removeStudentSuccessMessage').hide();
 $('#registeredStudentSuccessMessage').hide();
+$('#courseCreatedSuccessMessage').hide(700);
 
 
 
@@ -135,6 +136,10 @@ $("#saveCourse").on("click", function () {
         data: courseJSON,
         success: function (newCourse) {
             appendCourse(newCourse);
+
+            $('#courseCreatedSuccessMessage').fadeIn(700);
+            $('#courseCreatedSuccessMessage').fadeOut(7000);
+
             $("#createCourse").each(function () {
                 this.reset();
             });
@@ -557,8 +562,6 @@ $('#avregistreraStudent').on("click", function () {
     $('#removeStudentSuccessMessage').fadeIn(700);
     $('#removeStudentSuccessMessage').fadeOut(7000);
 });
-
-
 
 
 
