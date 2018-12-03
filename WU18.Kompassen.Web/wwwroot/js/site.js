@@ -95,10 +95,10 @@ function appendCourse(courseNew) {
             '<td><span class="noedit courseTerm">' + courseNew.term + '</span><input class="edit courseTerm" /></td>' +
             '<td><span class="noedit courseYear">' + courseNew.year + '</span><input class="edit courseYear" /></td>' +
             '<td>' + activeInput + '</td>' +
-            '<td><button data-id="' + courseNew.id + '" class="editCourse noedit">Ändra</button>' +
+            '<td class="buttonContainer"><button data-id="' + courseNew.id + '" class="editCourse noedit">Ändra</button>' +
             '<button data-id="' + courseNew.id + '" class="saveEdit edit">Spara</button>' +
             '<button data-id="' + courseNew.id + '" class="cancelEdit edit">Avbryt</button>' +
-            '<button data-id="' + courseNew.id + '" class="remove">X</button></td>' +
+            '<button data-id="' + courseNew.id + '" class="remove">Ta bort</button></td>' +
         '</tr>'
     );  
 
@@ -164,31 +164,35 @@ $("#saveCourse").on("click", function () {
 });
 
 // Delete course from table and database
-$courseTable.on("click", ".remove", function () {
+$courseTable.on("click", ".remove", function (e) {
 
-    //var $tr = $(this).closest("tr");
+    var confirmation = confirm("Are you sure you want to delete this course?");
 
-    $.ajax({
-        type: "DELETE",
-        url: "/api/courses/" + $(this).attr("data-id"),
-        success: function () {
+    if (confirmation) {
 
-            //$($tr).remove();
+        $.ajax({
+            type: "DELETE",
+            url: "/api/courses/" + $(this).attr("data-id"),
+            success: function () {
 
-            $courseTable.empty();
-            $courseTable1.empty();
+                $courseTable.empty();
+                $courseTable1.empty();
 
-            $.get("/api/courses", function (data) {
+                $.get("/api/courses", function (data) {
 
-                console.log(data);
-                $.each(data, function (i, course) {
-                    appendCourse(course);
+                    console.log(data);
+                    $.each(data, function (i, course) {
+                        appendCourse(course);
+                    });
+
                 });
 
-            });
+            }
+        });
 
-        }
-    });
+    } else {
+        e.preventDefault();
+    }
 });
 
 $courseTable.on("click", ".editCourse", function () {

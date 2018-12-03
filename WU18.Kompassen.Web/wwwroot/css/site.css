@@ -57,7 +57,7 @@ body {
     border: hidden;
 }
 
-tr .edit, button.edit {
+tr .edit, button.edit, tr.edit .noedit {
     display: none;
 }
 
@@ -65,10 +65,10 @@ tr.edit .edit {
     display: initial;
 }
 
-tr.edit .noedit {
-    display: none;
+input.edit {
+    width: 150px;
 }
 
-input.edit {
-    width: auto;
+.buttonContainer {
+    width:300px;
 }
