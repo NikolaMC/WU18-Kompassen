@@ -32,39 +32,6 @@ $("#navStudenter").on("click", function () {
 
  });*/
 
-$("#kurs_Slider").on("click", function () {
-
-    $("#panel3").slideToggle();
-
-    var icon = "<span class='glyphicon glyphicon-plus' aria-hidden='true'>";
-    var $this = $(this);
-    $this.toggleClass('open');
-
-    var option1 = icon + ' Lägg till ny kurs';
-    var option2 = ' Avbryt';
-
-    if ($this.hasClass('open')) {
-        $this.html(option1);
-    } else {
-        $this.html(option2);
-    }
-
-});
-
-/*$("#btnClose").on("click", function () {
-
-    $("#panel3").slideUp();
-
-    $("#kurs_Slider").AddClass('open');
-
-    //funkar inte
-
-    if (!$('#kurs_Slider').hasClass('open')) {
-        $('#kurs_Slider').addClass('open');
-    }
-
-});*/
-
 //---------------------------------------------------------------------------------------------
 
 var $courseTable = $("#coursesTable");
