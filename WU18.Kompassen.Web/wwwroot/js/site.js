@@ -294,52 +294,6 @@ $courseTable.on("click", ".saveEdit", function () {
 
 //------------------------------------------------------------------------------------------------------
 
-// Get data from /api/courses database and output it into the table
-var $courseTable = $("#coursesTable");
-
-
-$.get("/api/courses", function (data) {
-    //console.log(data);
-    $.each(data, function (i, course) {
-        $courseTable.append('<tr>');
-        $courseTable.append('<th scope="row">' + course.name + '</th>');
-        $courseTable.append('<td>' + course.credits + '</td>');
-        $courseTable.append('<td>' + course.term + '</td>');
-
-        if (course.active === true) {
-            $courseTable.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
-        } else {
-            $courseTable.append('<td><input type="checkbox" disabled="disabled"></td>');
-        }
-
-        $courseTable.append('</tr>');
-    });
-});
-
-
-var $coursesTableNewCourse = $("#coursesTableNewCourse");
-
-
-$.get("/api/courses", function (data) {
-    //console.log(data);
-    $.each(data, function (i, course) {
-        $coursesTableNewCourse.append('<tr>');
-        $coursesTableNewCourse.append('<th scope="row">' + course.name + '</th>');
-        $coursesTableNewCourse.append('<td>' + course.credits + '</td>');
-        $coursesTableNewCourse.append('<td>' + course.term + '</td>');
-
-        if (course.active === true) {
-            $coursesTableNewCourse.append('<td><input type="checkbox" checked="checked" disabled="disabled"></td>');
-        } else {
-            $coursesTableNewCourse.append('<td><input type="checkbox" disabled="disabled"></td>');
-        }
-
-        $coursesTableNewCourse.append('</tr>');
-    });
-});
-
-
-
 var $dropdownListStudents = $("#dropdownListStudents");
 
 $.get("/api/students", function (data) {
@@ -347,8 +301,6 @@ $.get("/api/students", function (data) {
     $.each(data, function (i, students) {
 
         $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' + students.lastName + '</a></li>');
-
-
 
     });
 });
@@ -361,15 +313,10 @@ $.get("/api/courses", function (data) {
 
         $dropdownListCourses.append('<li class="dropdownsCourses dropdownCourses"><a href="#">' + course.name + '</a></li>');
 
-
-
     });
 });
 
-
-
 var $panelGenerator = $("#panelGenerator");
-
 
 function getStudentsAndCourses(courses) {
     var looplength = courses.length;
@@ -415,7 +362,7 @@ var selectedCourseNameStudentsArray;
 
 $(document).on("click", "li.dropdownCourses a", function (e) {
 
-    e.preventDefault() // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
+    e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedCoursesName = $(this).html();
     console.log(clickedCoursesName);
     $('#displaySelectedStudent').empty();
@@ -429,16 +376,16 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
             var studentcourseCourse = courses;
             studentcourseCourse.forEach(function (studentCoursesName) {
 
-                if (clickedCoursesName == courses[i].name) {
+                if (clickedCoursesName === courses[i].name) {
                     courseIsSelceted = true;
                     console.log(courses[i]);
 
                    
 
-                    if (courseIsSelceted == true) {
+                    if (courseIsSelceted === true) {
                         $('#dropdownMenuButtonCourses').empty();
                         $('#dropdownMenuButtonCourses').append(clickedCoursesName);
-                    };
+                    }
 
 
 
@@ -455,7 +402,7 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 
             });
 
-        };
+        }
     var studentIsSelceted = false; 
 
        
@@ -468,7 +415,7 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 
 
 $(document).on("click", "li.dropdowns a", function (e) {
-    e.preventDefault() // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
+    e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedStudentName = $(this).html();
     $('#displaySelectedStudent').empty();
 
@@ -489,7 +436,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
 
 
-            if (clickedStudentName == linkedStudents.firstName || linkedStudents.lastName) {
+            if (clickedStudentName === linkedStudents.firstName || linkedStudents.lastName) {
                 studentIsSelceted = true;
             }
 
@@ -503,7 +450,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
      
 
-        if (studentIsSelceted == true) {
+        if (studentIsSelceted === true) {
             $('#dropdownMenuButtonStudents').empty();
             $('#dropdownMenuButtonStudents').append(clickedStudentName);
 
@@ -521,7 +468,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
                         var studentSearchedName = data.firstName + ' ' + data.lastName;
 
-                        if (studentSearchedName == clickedStudentName) {
+                        if (studentSearchedName === clickedStudentName) {
                             console.log(studentSearchedName);
                             var studentId = data.id;
                             var studentFirstName = data.firstName;
@@ -531,15 +478,15 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
 
                             var postStudent = {
-                                
+
                                 courseId: selectedCourseId,
-                                 studentId: studentId,
-                                
-                            }
+                                studentId: studentId
+
+                            };
                         
 
                             var courseJSON = JSON.stringify(postStudent);
-                            console.log('Loggar courseJSON: ' + courseJSON)
+                            console.log('Loggar courseJSON: ' + courseJSON);
 
                             console.log('Student som ska POSTas: ' + postStudent);
 
