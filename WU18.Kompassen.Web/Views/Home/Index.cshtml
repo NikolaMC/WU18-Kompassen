@@ -171,7 +171,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
-                                                        <button type="button" class="btn btn-danger">Avregistrera</button>
+                                                        <button type="button" id="avregistreraStudent" data-dismiss="modal" class="btn btn-danger">Avregistrera</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,34 +196,55 @@
                                     <form>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Namn</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Studentens namn">
+                                            <input type="text" class="form-control" id="createStudentInput_Name" aria-describedby="emailHelp" placeholder="Studentens namn">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Efternamn</label>
-                                            <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Studentens efternamn">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">År</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp" placeholder="Studentens födelseår">
+                                            <input type="text" class="form-control" id="createStudentInput_LastName" placeholder="Studentens efternamn">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">SSN</label>
-                                            <input type="email" class="form-control" id="exampleInputPassword2" placeholder="Studentens SSN">
+                                            <div class="text-info"><em>"xxxxxx-xxxx"</em></div>
+                                            <input type="text" class="form-control" id="createStudentInput_SSN" placeholder="Studentens SSN">
                                         </div>
 
                                         <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <input type="checkbox" class="form-check-input" id="createStudentInput_Active">
                                             <label class="form-check-label" for="exampleCheck1">Aktiv</label>
                                             <div class="text-info">Ange om studenten ska vara aktiv eller inaktiv.</div>
                                         </div>
                                         <br />
-                                        <button type="submit" class="btn btn-success">Lägg till</button>
+
+                                        <button type="button" id="createStudentsAbort" class="btn btn-secondary">Avbryt</button>
+
+                                        <br />
+                                        <br />
+                                        <button type="button" id="createNewStudentBtn" class="btn btn-success">Lägg till</button>
+
                                     </form>
 
+
+
+
                                     <br />
+
+                                    <div class="row">
+
+
+                                        <div id="addStudentSuccessMessage" class="alert alert-success" role="alert">
+                                            Studenten lades till i systemet.
+                                        </div>
+                                        <div id="removeStudentSuccessMessage" class="alert alert-danger" role="alert">
+                                            Studenten har avregistrerats från kursen.
+                                        </div>
+                                        <div id="registeredStudentSuccessMessage" class="alert alert-warning" role="alert">
+                                            Studenten har registrerats på kursen.
+                                        </div>
+
+
+                                    </div>
 
                                 </div>
 
@@ -256,7 +277,7 @@
 
         <div class=" panel-heading ">
             Ny Kurs
-            <div class="pull-right"><Button id="btnClose" class="nobg"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></Button></div>
+            
         </div>
 
         <br />

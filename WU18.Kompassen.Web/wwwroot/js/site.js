@@ -7,6 +7,9 @@
 
 
 
+$('#addStudentSuccessMessage').hide();
+$('#removeStudentSuccessMessage').hide();
+$('#registeredStudentSuccessMessage').hide();
 
 
 
@@ -136,7 +139,6 @@ $("#saveCourse").on("click", function () {
                 this.reset();
             });
         }
-
     });
 
 });
@@ -163,9 +165,7 @@ $courseTable.on("click", ".remove", function (e) {
                     $.each(data, function (i, course) {
                         appendCourse(course);
                     });
-
                 });
-
             }
         });
 
@@ -331,52 +331,26 @@ var selectedCourseNameStudentsArray;
 
 
 $(document).on("click", "li.dropdownCourses a", function (e) {
-
     e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedCoursesName = $(this).html();
     $('#displaySelectedStudent').empty();
-
     $.get("/api/courses", function (courses) {
-
         var looplength = courses.length;
-
         for (i = 0; i < looplength; i++) {
-
             var studentcourseCourse = courses;
             studentcourseCourse.forEach(function (studentCoursesName) {
-
                 if (clickedCoursesName === courses[i].name) {
                     courseIsSelceted = true;
-
-                   
-
                     if (courseIsSelceted === true) {
                         $('#dropdownMenuButtonCourses').empty();
                         $('#dropdownMenuButtonCourses').append(clickedCoursesName);
                     }
-
-
-
                     selectedCourseId = courses[i].id;
-
-
-
-
-
-                    
                 }
-
-
             });
-
         }
-    var studentIsSelceted = false; 
-
-       
+    var studentIsSelceted = false;        
     });
-   
-
-
 });
 
 
@@ -388,44 +362,29 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
     $.get("/api/courses", function (courses) {
     
-
     var looplength = courses.length;
     for (i = 0; i < looplength; i++) {
-
-
-
-
+        
         //studentlista för data[i]
         var studentcourse = courses[i].students;
 
         //loopa igenom varje student i varje kurs (data[i])
         studentcourse.forEach(function (linkedStudents) {
-
-
-
+            
             if (clickedStudentName === linkedStudents.firstName || linkedStudents.lastName) {
                 studentIsSelceted = true;
             }
-
-
+            
         });
-
-       
-       
+        
     }
-
-
-     
-
+        
         if (studentIsSelceted === true) {
             $('#dropdownMenuButtonStudents').empty();
             $('#dropdownMenuButtonStudents').append(clickedStudentName);
-
             
-
             $('#addStudentsEventButton').on("click", function (e) {
                
-
                 $.get("/api/searchstudents/e", function (students) {
 
                     $.each(students, function (i, data) {
@@ -438,8 +397,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
                             var studentLastName = data.lastName;
                             var studentSSN = data.ssn;
                             var studentActive = data.active;
-
-
+                            
                             var postStudent = {
 
                                 courseId: selectedCourseId,
@@ -447,10 +405,8 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
                             };
                         
-
                             var courseJSON = JSON.stringify(postStudent);
-
-
+                            
                             $.ajax({
                                 type: "POST",
                                 contentType: 'application/json',
@@ -462,42 +418,23 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
                                     $("#panelGenerator").empty();
 
+                                    $('#registeredStudentSuccessMessage').fadeIn(700);
+                                    $('#registeredStudentSuccessMessage').fadeOut(7000);
+
                                     $.get("/api/courses", function (courses) {
                                         getStudentsAndCourses(courses);
                                         resetDropdowns();
-                                       
-                                        
 
                                     });
-
-
-
                                 }
 
                             });
 
-
-
-
-
-
-
-
                         }
-
-
-
                     });
                 });
 
-       
-                   
-
-
             });
-
-
-
         }
 
         var studentIsSelceted = false; 
@@ -518,8 +455,6 @@ function resetDropdowns() {
 
 }
 
-
-
 $('#studentsAbort').on("click", function (e) {
     $('#dropdownMenuButtonStudents').empty();
     $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
@@ -530,9 +465,105 @@ $('#studentsAbort').on("click", function (e) {
 });
 
 
+var createStudentInput_Name = $('#createStudentInput_Name');
+var createStudentInput_LastName = $('#createStudentInput_LastName');
+var createStudentInput_SSN = $('#createStudentInput_SSN');
+var createStudentInput_Active;
 
 
 
-
-
+$('#createStudentsAbort').on("click", function () {
+    
+    document.getElementById('createStudentInput_Name').value = '';
+    document.getElementById('createStudentInput_LastName').value = '';
+    document.getElementById('createStudentInput_SSN').value = '';
    
+});
+
+
+
+
+
+
+$('#createNewStudentBtn').on("click", function () {
+
+    var checkBox = $('#createStudentInput_Active');
+
+    if (checkBox.checked == true) {
+        createStudentInput_Active = true;
+    } else {
+        createStudentInput_Active = false;
+    }
+
+
+    var createNewStudent = {
+
+        firstname: createStudentInput_Name.val(),
+        lastname: createStudentInput_LastName.val(),
+        ssn: createStudentInput_SSN.val(),
+        active: createStudentInput_Active
+
+    };
+
+
+
+
+    var newStudentJSON = JSON.stringify(createNewStudent);
+
+    $.ajax({
+        type: "POST",
+        contentType: 'application/json',
+        url: "/api/students",
+        dataType: "json",
+        data: newStudentJSON,
+        success: function (Course) {
+           
+            createStudentInput_Name.empty();
+            createStudentInput_LastName.empty();
+            createStudentInput_SSN.empty();
+
+            $('#addStudentSuccessMessage').fadeIn(700);
+            $('#addStudentSuccessMessage').fadeOut(7000);
+
+            document.getElementById('createStudentInput_Name').value = '';
+            document.getElementById('createStudentInput_LastName').value = '';
+            document.getElementById('createStudentInput_SSN').value = '';
+
+
+            $dropdownListStudents.empty();
+            $.get("/api/students", function (data) {
+                //console.log(data);
+                $.each(data, function (i, students) {
+                   
+                    $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' + students.lastName + '</a></li>');
+
+                });
+            });
+
+
+           
+        }
+
+    });
+
+
+    
+});
+
+
+
+
+$('#avregistreraStudent').on("click", function () {
+    $('#removeStudentSuccessMessage').fadeIn(700);
+    $('#removeStudentSuccessMessage').fadeOut(7000);
+});
+
+
+
+
+
+
+
+
+
+
