@@ -95,10 +95,10 @@ function appendCourse(courseNew) {
             '<td><span class="noedit courseTerm">' + courseNew.term + '</span><input class="edit courseTerm" /></td>' +
             '<td><span class="noedit courseYear">' + courseNew.year + '</span><input class="edit courseYear" /></td>' +
             '<td>' + activeInput + '</td>' +
-            '<td class="buttonContainer"><button data-id="' + courseNew.id + '" class="editCourse noedit">Ändra</button>' +
-            '<button data-id="' + courseNew.id + '" class="saveEdit edit">Spara</button>' +
-            '<button data-id="' + courseNew.id + '" class="cancelEdit edit">Avbryt</button>' +
-            '<button data-id="' + courseNew.id + '" class="remove">Ta bort</button></td>' +
+            '<td class="buttonContainer"><button data-id="' + courseNew.id + '" class="editCourse noedit btn btn-info">Ändra</button>' +
+            '<button data-id="' + courseNew.id + '" class="saveEdit edit btn btn-success">Spara</button>' +
+            '<button data-id="' + courseNew.id + '" class="cancelEdit edit btn btn-warning">Avbryt</button>' +
+            '<button data-id="' + courseNew.id + '" class="remove btn btn-danger">Ta bort</button></td>' +
         '</tr>'
     );  
 
@@ -167,6 +167,7 @@ $("#saveCourse").on("click", function () {
 $courseTable.on("click", ".remove", function (e) {
 
     var confirmation = confirm("Are you sure you want to delete this course?");
+
 
     if (confirmation) {
 

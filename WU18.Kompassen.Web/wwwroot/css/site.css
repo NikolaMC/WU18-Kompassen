@@ -66,9 +66,18 @@ tr.edit .edit {
 }
 
 input.edit {
-    width: 150px;
+    width: 50px;
+}
+
+.courseName {
+    min-width: 200px;
 }
 
 .buttonContainer {
-    width:300px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.btn {
+    margin: 1px;
 }
