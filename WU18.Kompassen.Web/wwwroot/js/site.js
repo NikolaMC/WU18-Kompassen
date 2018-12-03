@@ -310,7 +310,7 @@ function getStudentsAndCourses(courses) {
 
         //loopa igenom varje student i varje kurs (data[i])
         studentcourse.forEach(function (linkedStudents) {
-            $panelGenerator.append('<li class="list-group-item">' + linkedStudents.firstName + ' ' + linkedStudents.lastName + ' <span class="glyphicon glyphicon-trash pull-right" aria-hidden="true"></span> </li>');
+            $panelGenerator.append('<li class="list-group-item">' + linkedStudents.firstName + ' ' + linkedStudents.lastName + ' <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span> </li>');
         });
 
         $panelGenerator.append('</ul>');
