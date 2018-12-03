@@ -99,7 +99,6 @@ $.ajaxSetup({ contentType: "application/json" }); // Set contentType to applicat
 // Get data from /api/courses database and output it into the table
 $.get("/api/courses", function (data) {
 
-    console.log(data);
     $.each(data, function (i, course) {
         appendCourse(course);
     });
@@ -125,7 +124,6 @@ $("#saveCourse").on("click", function () {
 
     var courseJSON = JSON.stringify(course);
 
-    console.log(course);
 
     $.ajax({
         type: "POST",
@@ -146,7 +144,7 @@ $("#saveCourse").on("click", function () {
 // Delete course from table and database
 $courseTable.on("click", ".remove", function (e) {
 
-    var confirmation = confirm("Are you sure you want to delete this course?");
+    var confirmation = confirm("Är du säker att du vill ta bort kursen?");
 
 
     if (confirmation) {
@@ -265,33 +263,6 @@ $courseTable.on("click", ".saveEdit", function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //------------------------------------------------------------------------------------------------------
 
 var $dropdownListStudents = $("#dropdownListStudents");
@@ -308,7 +279,6 @@ $.get("/api/students", function (data) {
 var $dropdownListCourses = $("#dropdownListCourses");
 
 $.get("/api/courses", function (data) {
-    console.log(data);
     $.each(data, function (i, course) {
 
         $dropdownListCourses.append('<li class="dropdownsCourses dropdownCourses"><a href="#">' + course.name + '</a></li>');
@@ -364,7 +334,6 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 
     e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedCoursesName = $(this).html();
-    console.log(clickedCoursesName);
     $('#displaySelectedStudent').empty();
 
     $.get("/api/courses", function (courses) {
@@ -378,7 +347,6 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 
                 if (clickedCoursesName === courses[i].name) {
                     courseIsSelceted = true;
-                    console.log(courses[i]);
 
                    
 
@@ -391,7 +359,6 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 
                     selectedCourseId = courses[i].id;
 
-                    console.log(selectedCourseId);
 
 
 
@@ -457,19 +424,15 @@ $(document).on("click", "li.dropdowns a", function (e) {
             
 
             $('#addStudentsEventButton').on("click", function (e) {
-                console.log('************************************************');
-                console.log('************************************************');
-                console.log(clickedStudentName + ' är vald');
+               
 
                 $.get("/api/searchstudents/e", function (students) {
-                  console.log(students);
 
                     $.each(students, function (i, data) {
 
                         var studentSearchedName = data.firstName + ' ' + data.lastName;
 
                         if (studentSearchedName === clickedStudentName) {
-                            console.log(studentSearchedName);
                             var studentId = data.id;
                             var studentFirstName = data.firstName;
                             var studentLastName = data.lastName;
@@ -486,9 +449,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
                         
 
                             var courseJSON = JSON.stringify(postStudent);
-                            console.log('Loggar courseJSON: ' + courseJSON);
 
-                            console.log('Student som ska POSTas: ' + postStudent);
 
                             $.ajax({
                                 type: "POST",
@@ -497,7 +458,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
                                 dataType: "json",
                                 data: courseJSON,
                                 success: function (Course) {
-                                    alert('Det funkade');
+                                    
 
                                     $("#panelGenerator").empty();
 
@@ -564,7 +525,7 @@ $('#studentsAbort').on("click", function (e) {
     $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
 
     $('#dropdownMenuButtonCourses').empty();
-    $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+    $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Kurser');
 
 });
 
