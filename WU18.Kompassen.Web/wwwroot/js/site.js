@@ -277,7 +277,7 @@ $.get("/api/students", function (data) {
     //console.log(data);
     $.each(data, function (i, students) {
 
-        $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' + students.lastName + '</a></li>');
+        $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + '</a>'+ ' ' + students.lastName + '</li>');
 
     });
 });
