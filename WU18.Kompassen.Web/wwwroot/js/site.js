@@ -359,6 +359,7 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 
 
 
+
 $(document).on("click", "li.dropdowns a", function (e) {
     e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedStudentName = $(this).html();
@@ -374,23 +375,25 @@ $(document).on("click", "li.dropdowns a", function (e) {
             $('#dropdownMenuButtonStudents').append(clickedStudentName);
             
             $('#addStudentsEventButton').on("click", function (e) {
-               
+                var sendingStudentId = null;
                 $.get("/api/searchstudents/" + clickedStudentName, function (student) {
                   
 
                     
-                           
                     console.log(student);
-                 
-                    var sendingStudentId = null;
+                    
+                    
                     console.log('Id som skickas med: ' + sendingStudentId);
                     $.each(student, function (i, studendata) {
 
+
+                      
+
                         var studentId = studendata;
+
 
                         sendingStudentId = studentId.id;
 
-                        console.log(studentId.id);
 
 
                     });
@@ -413,7 +416,6 @@ $(document).on("click", "li.dropdowns a", function (e) {
                                 dataType: "json",
                                 data: courseJSON,
                                 success: function (Course) {
-                                    
 
                                     $("#panelGenerator .row").empty();
                                     console.log('Panel generator empty');
@@ -553,19 +555,45 @@ $('#avregistreraStudent').on("click", function () {
     $('#removeStudentSuccessMessage').fadeOut(7000);
 });
 
-var studentFirstName;
-var studentLastName;
-var studentSSN;
-var studentActive;
+
 
 $('#editButtonDropdown').on("click", function () {
 
-   // clickedStudentName;
    
+   // studentActiveForInput;
     
-    document.getElementById('createStudentInput_Name').value = studentFirstName;
-    document.getElementById('createStudentInput_LastName').value = studentLastName;
-    document.getElementById('createStudentInput_SSN').value = studentSSN;
+   
+    $.get("/api/searchstudents/" + clickedStudentName, function (student) {
+
+
+
+        console.log(student);
+
+
+        $.each(student, function (i, studendata) {
+
+
+           var studentFirstNameForInput = studentdata.firstName;
+           var studentLastNameForInput = studentdata.lastName;
+           var studentSSNForInput = studentdata.ssn;
+           var studentActiveForInput = studentdata.active;
+
+
+            var studentId = studendata;
+
+
+            sendingStudentId = studentId.id;
+
+
+
+        });
+
+        document.getElementById('createStudentInput_Name').value = studentFirstNameForInput;
+        document.getElementById('createStudentInput_LastName').value = studentLastNameForInput;
+        document.getElementById('createStudentInput_SSN').value = stustudentSSNForInputdentSSN;
+
+        
+
 });
 
 
