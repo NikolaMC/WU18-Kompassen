@@ -362,54 +362,49 @@ $(document).on("click", "li.dropdownCourses a", function (e) {
 $(document).on("click", "li.dropdowns a", function (e) {
     e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedStudentName = $(this).html();
+    console.log(clickedStudentName);
+
     $('#displaySelectedStudent').empty();
     $('#editButtonDropdown').fadeIn(1700);
-    $.get("/api/courses", function (courses) {
-    
-    var looplength = courses.length;
-    for (i = 0; i < looplength; i++) {
-        
-        //studentlista för data[i]
-        var studentcourse = courses[i].students;
 
-        //loopa igenom varje student i varje kurs (data[i])
-        studentcourse.forEach(function (linkedStudents) {
-            
-            if (clickedStudentName === linkedStudents.firstName || linkedStudents.lastName) {
-                studentIsSelceted = true;
-            }
-            
-        });
-        
-    }
-        
+     studentIsSelceted = true;
+
         if (studentIsSelceted === true) {
             $('#dropdownMenuButtonStudents').empty();
             $('#dropdownMenuButtonStudents').append(clickedStudentName);
             
             $('#addStudentsEventButton').on("click", function (e) {
                
-                $.get("/api/searchstudents/e", function (students) {
+                $.get("/api/searchstudents/" + clickedStudentName, function (student) {
+                  
 
-                    $.each(students, function (i, data) {
+                    
+                           
+                    console.log(student);
+                 
+                    var sendingStudentId = null;
+                    console.log('Id som skickas med: ' + sendingStudentId);
+                    $.each(student, function (i, studendata) {
 
-                        var studentSearchedName = data.firstName + ' ' + data.lastName;
+                        var studentId = studendata;
 
-                        if (studentSearchedName === clickedStudentName) {
-                            var studentId = data.id;
-                            var studentFirstName = data.firstName;
-                            var studentLastName = data.lastName;
-                            var studentSSN = data.ssn;
-                            var studentActive = data.active;
+                        sendingStudentId = studentId.id;
+
+                        console.log(studentId.id);
+
+
+                    });
                             
                             var postStudent = {
 
                                 courseId: selectedCourseId,
-                                studentId: studentId
+                                studentId: sendingStudentId
 
                             };
                         
-                            var courseJSON = JSON.stringify(postStudent);
+                    var courseJSON = JSON.stringify(postStudent);
+                    console.log(courseJSON);
+
                             
                             $.ajax({
                                 type: "POST",
@@ -421,7 +416,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
                                     
 
                                     $("#panelGenerator .row").empty();
-
+                                    console.log('Panel generator empty');
                                     $('#registeredStudentSuccessMessage').fadeIn(700);
                                     $('#registeredStudentSuccessMessage').fadeOut(7000);
 
@@ -432,16 +427,13 @@ $(document).on("click", "li.dropdowns a", function (e) {
                                 }
 
                             });
-
-                        }
-                    });
                 });
 
             });
-        }
+       
 
         var studentIsSelceted = false; 
-});
+};
 });
 
 
