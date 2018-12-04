@@ -121,11 +121,7 @@ input.edit {
     border-radius: 7px;
 
 }
-.containerGrid {
-    display: grid;
-    
-    grid-gap: 10px;
-}
+
 
 
 
@@ -160,4 +156,6 @@ input.edit {
 }
 
 
-
+#panelGenerator ul {
+    margin-right:37px;
+}

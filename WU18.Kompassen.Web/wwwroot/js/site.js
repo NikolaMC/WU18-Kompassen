@@ -291,31 +291,29 @@ $.get("/api/courses", function (data) {
     });
 });
 
-var $panelGenerator = $("#panelGenerator");
+var $panelGenerator = $("#panelGenerator .row");
 
 function getStudentsAndCourses(courses) {
     var looplength = courses.length;
-    for (i = 0; i < looplength; i++) {
+    for (var i = 0; i < looplength; i++) {
 
+        var $div = $('<div class="col-lg-4"></div>');
 
+        $div.append('<ul class="list-group">');
 
-        $panelGenerator.append('<ul class="list-group">');
-        $panelGenerator.append('<li class="list-group-item active">' + courses[i].name + '</li>');
-
-
-
+        // Här måste du hämta ut ul som du skapar ovanför och köra append på den för att lägga till li i den.
+        $ulList = $div.find('.list-group');
+        $ulList.append('<li class="list-group-item active">' + courses[i].name + '</li>');
 
         //studentlista för data[i]
         var studentcourse = courses[i].students;
 
         //loopa igenom varje student i varje kurs (data[i])
         studentcourse.forEach(function (linkedStudents) {
-            $panelGenerator.append('<li class="list-group-item">' + linkedStudents.firstName + ' ' + linkedStudents.lastName + ' <span class="glyphicon glyphicon-pencil pull-right" aria-hidden="true"></span> </li>');
+            $ulList.append('<li class="list-group-item">' + linkedStudents.firstName + ' ' + linkedStudents.lastName +  '</li>');
         });
 
-        $panelGenerator.append('</ul>');
-
-
+        $panelGenerator.append($div);
 
     }
 
