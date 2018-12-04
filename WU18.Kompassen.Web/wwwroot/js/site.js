@@ -11,6 +11,7 @@ $('#addStudentSuccessMessage').hide();
 $('#removeStudentSuccessMessage').hide();
 $('#registeredStudentSuccessMessage').hide();
 $('#courseCreatedSuccessMessage').hide(700);
+$('#editButtonDropdown').hide();
 
 
 
@@ -310,7 +311,7 @@ function getStudentsAndCourses(courses) {
 
         //loopa igenom varje student i varje kurs (data[i])
         studentcourse.forEach(function (linkedStudents) {
-            $ulList.append('<li class="list-group-item">' + linkedStudents.firstName + ' ' + linkedStudents.lastName +  '</li>');
+            $ulList.append('<li class="list-group-item">' + linkedStudents.firstName + ' ' + linkedStudents.lastName + '</li>');
         });
 
         $panelGenerator.append($div);
@@ -362,7 +363,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
     e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     var clickedStudentName = $(this).html();
     $('#displaySelectedStudent').empty();
-
+    $('#editButtonDropdown').fadeIn(1700);
     $.get("/api/courses", function (courses) {
     
     var looplength = courses.length;
@@ -419,14 +420,13 @@ $(document).on("click", "li.dropdowns a", function (e) {
                                 success: function (Course) {
                                     
 
-                                    $("#panelGenerator").empty();
+                                    $("#panelGenerator .row").empty();
 
                                     $('#registeredStudentSuccessMessage').fadeIn(700);
                                     $('#registeredStudentSuccessMessage').fadeOut(7000);
 
                                     $.get("/api/courses", function (courses) {
                                         getStudentsAndCourses(courses);
-                                        resetDropdowns();
 
                                     });
                                 }
@@ -561,10 +561,21 @@ $('#avregistreraStudent').on("click", function () {
     $('#removeStudentSuccessMessage').fadeOut(7000);
 });
 
+var studentFirstName;
+var studentLastName;
+var studentSSN;
+var studentActive;
+
+$('#editButtonDropdown').on("click", function () {
+
+   // clickedStudentName;
+   
+    
+    document.getElementById('createStudentInput_Name').value = studentFirstName;
+    document.getElementById('createStudentInput_LastName').value = studentLastName;
+    document.getElementById('createStudentInput_SSN').value = studentSSN;
+});
 
 
-
-
-
-
+ 
 
