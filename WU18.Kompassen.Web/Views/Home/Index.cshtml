@@ -84,7 +84,7 @@
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <ul id="dropdownListStudents" class="dropdownsUl"></ul>
                                             </div>
-                                            <button class="nobg" id="editButtonDropdown">  <span  class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+                                            <button class="nobg" id="editButtonDropdown">  <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
                                         </div>
 
 
@@ -220,8 +220,29 @@
 
 
                                                 <button type="button" id="createNewStudentBtn" class="btn btn-success">Lägg till</button>
+
+                                                <button type="button" id="updateStudent" data-toggle="modal" data-target="#updateStudentModal" class="btn btn-info">Uppdatera student</button>
                                             </div>
 
+                                            <div class="modal fade" id="updateStudentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Är du säker att du vill uppdatera studenten?
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Avbryt</button>
+                                                            <button type="button" data-dismiss="modal" id="updateStudentEventButton" class="btn btn-info">Uppdatera</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                         </form>
 
@@ -242,6 +263,9 @@
                                             <div id="registeredStudentSuccessMessage" class="alert alert-warning" role="alert">
                                                 Studenten har registrerats på kursen.
                                             </div>
+                                            <div id="updatedStudentSuccessMessage" class="alert alert-info" role="alert">
+                                                Studenten har uppdaterats.
+                                            </div>
 
 
                                         </div>
@@ -249,7 +273,7 @@
                                     </div>
 
                                 </div>
-
+                                
                             </div>
 
 
