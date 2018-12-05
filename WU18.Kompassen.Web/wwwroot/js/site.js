@@ -461,7 +461,7 @@ function resetDropdowns() {
     $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
 
     $('#dropdownMenuButtonCourses').empty();
-    $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+    $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Kurser');
 
 
 
@@ -473,6 +473,10 @@ $('#studentsAbort').on("click", function (e) {
 
     $('#dropdownMenuButtonCourses').empty();
     $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Kurser');
+
+    $('#updateStudent').hide();
+
+    $('#editButtonDropdown').hide();
 
 });
 
@@ -489,6 +493,14 @@ $('#createStudentsAbort').on("click", function () {
     document.getElementById('createStudentInput_Name').value = '';
     document.getElementById('createStudentInput_LastName').value = '';
     document.getElementById('createStudentInput_SSN').value = '';
+
+    $('#dropdownMenuButtonStudents').empty();
+    $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+
+
+    $('#updateStudent').hide();
+
+    $('#editButtonDropdown').hide();
 
 });
 
@@ -687,6 +699,7 @@ $('#updateStudentEventButton').on("click", function () {
 
     $('#editButtonDropdown').hide();
 
+    $('#updateStudent').hide();
 });
 
 
