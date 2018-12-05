@@ -393,23 +393,14 @@ $(document).on("click", "li.dropdowns a", function (e) {
             var sendingStudentId = null;
             $.get("/api/searchstudents/" + clickedStudentName, function (student) {
 
-
-
                 console.log(student);
-
 
                 console.log('Id som skickas med: ' + sendingStudentId);
                 $.each(student, function (i, studendata) {
 
-
-
-
                     var studentId = studendata;
 
-
                     sendingStudentId = studentId.id;
-
-
 
                 });
 
@@ -422,7 +413,6 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
                 var courseJSON = JSON.stringify(postStudent);
                 console.log(courseJSON);
-
 
                 $.ajax({
                     type: "POST",
@@ -439,7 +429,6 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
                         $.get("/api/courses", function (courses) {
                             getStudentsAndCourses(courses);
-
                         });
                     }
 
@@ -448,6 +437,48 @@ $(document).on("click", "li.dropdowns a", function (e) {
 
         });
 
+        $("#avregistreraStudent").on("click", function () {
+
+            $.get("/api/searchstudents/" + clickedStudentName, function (student) {
+
+                $.each(student, function (i, studendata) {
+
+                    var studentId = studendata;
+
+                    sendingStudentId = studentId.id;
+
+                });
+
+                var avregistreraStudent = {
+
+                    courseId: selectedCourseId,
+                    studentId: sendingStudentId
+
+                };
+
+                var studentJSON = JSON.stringify(avregistreraStudent);
+                console.log(studentJSON);
+
+                $.ajax({
+
+                    type: "DELETE",
+                    contentType: "application/json",
+                    url: "api/studentcourses",
+                    dataType: "json",
+                    data: studentJSON,
+                    success: function () {
+                        $("#panelGenerator .row").empty();
+
+                        $.get("/api/courses", function (courses) {
+                            getStudentsAndCourses(courses);
+                        });
+                    }
+
+                });
+
+            });
+
+        })
 
         var studentIsSelceted = false;
     };
