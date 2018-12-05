@@ -453,6 +453,16 @@ $(document).on("click", "li.dropdowns a", function (e) {
     };
 });
 
+function resetAfterAbort() {
+    $('#updateStudent').hide();
+
+    $('#editButtonDropdown').hide();
+
+    document.getElementById('createStudentInput_Name').value = '';
+    document.getElementById('createStudentInput_LastName').value = '';
+    document.getElementById('createStudentInput_SSN').value = '';
+
+}
 
 
 function resetDropdowns() {
@@ -468,15 +478,9 @@ function resetDropdowns() {
 }
 
 $('#studentsAbort').on("click", function (e) {
-    $('#dropdownMenuButtonStudents').empty();
-    $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
+   
 
-    $('#dropdownMenuButtonCourses').empty();
-    $('#dropdownMenuButtonCourses').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Kurser');
-
-    $('#updateStudent').hide();
-
-    $('#editButtonDropdown').hide();
+    resetAfterAbort()
 
 });
 
@@ -490,17 +494,10 @@ var createStudentInput_Active;
 
 $('#createStudentsAbort').on("click", function () {
 
-    document.getElementById('createStudentInput_Name').value = '';
-    document.getElementById('createStudentInput_LastName').value = '';
-    document.getElementById('createStudentInput_SSN').value = '';
+    
 
-    $('#dropdownMenuButtonStudents').empty();
-    $('#dropdownMenuButtonStudents').append(' <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>  Studenter');
-
-
-    $('#updateStudent').hide();
-
-    $('#editButtonDropdown').hide();
+    resetDropdowns()
+    resetAfterAbort()
 
 });
 
