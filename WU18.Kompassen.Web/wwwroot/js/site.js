@@ -76,12 +76,41 @@ function appendCourse(courseNew) {
         activeInput = activeUnchecked;
     }
 
+    var checkedName;
+    var checkedCredits;
+    var checkedTerm;
+    var checkedYear;
+
+    if (courseNew.name === "") {
+        checkedName = "N/A";
+    } else {
+        checkedName = courseNew.name;
+    }
+
+    if (courseNew.credits === "") {
+        checkedCredits = "N/A";
+    } else {
+        checkedCredits = courseNew.credits;
+    }
+
+    if (courseNew.term === "") {
+        checkedTerm = "N/A";
+    } else {
+        checkedTerm = courseNew.term;
+    }
+
+    if (courseNew.year === "") {
+        checkedYear = "N/A";
+    } else {
+        checkedYear = courseNew.year;
+    }
+
     $courseTable.append(
         '<tr data-id="' + courseNew.id + '">' +
-        '<th scope="row"><span class="noedit courseName">' + courseNew.name + '</span><input class="edit courseName" /></th>' +
-        '<td><span class="noedit courseCredits">' + courseNew.credits + '</span><input class="edit courseCredits" /></td>' +
-        '<td><span class="noedit courseTerm">' + courseNew.term + '</span><input class="edit courseTerm" /></td>' +
-        '<td><span class="noedit courseYear">' + courseNew.year + '</span><input class="edit courseYear" /></td>' +
+        '<th scope="row"><span class="noedit courseName">' + checkedName + '</span><input class="edit courseName" /></th>' +
+        '<td><span class="noedit courseCredits">' + checkedCredits + '</span><input class="edit courseCredits" /></td>' +
+        '<td><span class="noedit courseTerm">' + checkedTerm + '</span><input class="edit courseTerm" /></td>' +
+        '<td><span class="noedit courseYear">' + checkedYear + '</span><input class="edit courseYear" /></td>' +
         '<td>' + activeInput + '</td>' +
         '<td class="buttonContainer"><button data-id="' + courseNew.id + '" class="editCourse noedit btn btn-info">Ändra</button>' +
         '<button data-id="' + courseNew.id + '" class="saveEdit edit btn btn-success">Spara</button>' +
@@ -92,10 +121,10 @@ function appendCourse(courseNew) {
 
     $courseTable1.append(
         '<tr>' +
-        '<th scope="row">' + courseNew.name + '</th>' +
-        '<td>' + courseNew.credits + '</td>' +
-        '<td>' + courseNew.term + '</td>' +
-        '<td>' + courseNew.year + '</td>' +
+        '<th scope="row">' + checkedName + '</th>' +
+        '<td>' + checkedCredits + '</td>' +
+        '<td>' + checkedTerm + '</td>' +
+        '<td>' + checkedYear + '</td>' +
         '<td>' + activeInput + '</td>' +
         '</tr>'
     );
