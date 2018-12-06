@@ -290,7 +290,7 @@ $.get("/api/students", function (data) {
 });
 
 function getStudentsInDropdown(students) {
-        $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + '</a>' + ' ' + students.lastName + '</li>');
+    $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + '</a>' + ' ' + students.lastName + '</li>');
 }
 
 
@@ -378,7 +378,6 @@ var clickedStudentName = null;
 $(document).on("click", "li.dropdowns a", function (e) {
     e.preventDefault(); // Eftersom vi klickar på a tagg som har en ankar länkar (#) så säger vi skit i o följa länken.
     clickedStudentName = $(this).html();
-    console.log(clickedStudentName);
 
     $('#displaySelectedStudent').empty();
     $('#editButtonDropdown').fadeIn(700);
@@ -389,69 +388,71 @@ $(document).on("click", "li.dropdowns a", function (e) {
         $('#dropdownMenuButtonStudents').empty();
         $('#dropdownMenuButtonStudents').append(clickedStudentName);
 
-        $('#addStudentsEventButton').on("click", function (e) {
-            var sendingStudentId = null;
-            $.get("/api/searchstudents/" + clickedStudentName, function (student) {
+
+    };
+});
+
+
+$('#addStudentsEventButton').on("click", function (e) {
+
+    clickedStudentName;
+
+    $.get("/api/searchstudents/" + clickedStudentName, function (student) {
+        
+        console.log(student);
+
+        $.each(student, function (i, studendata) {
 
 
 
-                console.log(student);
+
+            var studentId = studendata;
 
 
-                console.log('Id som skickas med: ' + sendingStudentId);
-                $.each(student, function (i, studendata) {
+            sendingStudentId = studentId.id;
 
 
-
-
-                    var studentId = studendata;
-
-
-                    sendingStudentId = studentId.id;
-
-
-
-                });
-
-                var postStudent = {
-
-                    courseId: selectedCourseId,
-                    studentId: sendingStudentId
-
-                };
-
-                var courseJSON = JSON.stringify(postStudent);
-                console.log(courseJSON);
-
-
-                $.ajax({
-                    type: "POST",
-                    contentType: 'application/json',
-                    url: "/api/studentcourses/",
-                    dataType: "json",
-                    data: courseJSON,
-                    success: function (Course) {
-
-                        $("#panelGenerator .row").empty();
-                        console.log('Panel generator empty');
-                        $('#registeredStudentSuccessMessage').fadeIn(700);
-                        $('#registeredStudentSuccessMessage').fadeOut(7000);
-
-                        $.get("/api/courses", function (courses) {
-                            getStudentsAndCourses(courses);
-
-                        });
-                    }
-
-                });
-            });
 
         });
 
+        var postStudent = {
 
-        var studentIsSelceted = false;
-    };
+            courseId: selectedCourseId,
+            studentId: sendingStudentId
+
+        };
+
+        var courseJSON = JSON.stringify(postStudent);
+        console.log(courseJSON);
+
+
+        $.ajax({
+            type: "POST",
+            contentType: 'application/json',
+            url: "/api/studentcourses/",
+            dataType: "json",
+            data: courseJSON,
+            success: function (Course) {
+
+                $("#panelGenerator .row").empty();
+                console.log('Panel generator empty');
+                $('#registeredStudentSuccessMessage').fadeIn(700);
+                $('#registeredStudentSuccessMessage').fadeOut(7000);
+
+                $.get("/api/courses", function (courses) {
+                    getStudentsAndCourses(courses);
+
+                });
+            }
+
+        });
+    });
+
 });
+
+
+var studentIsSelceted = false;
+
 
 function resetAfterAbort() {
     $('#updateStudent').hide();
@@ -478,7 +479,7 @@ function resetDropdowns() {
 }
 
 $('#studentsAbort').on("click", function (e) {
-   
+
 
     resetAfterAbort()
 
@@ -494,7 +495,7 @@ var createStudentInput_Active;
 
 $('#createStudentsAbort').on("click", function () {
 
-    
+
 
     resetDropdowns()
     resetAfterAbort()
@@ -526,7 +527,7 @@ $('#createNewStudentBtn').on("click", function () {
 
     };
 
-  
+
 
 
 
@@ -548,9 +549,8 @@ $('#createNewStudentBtn').on("click", function () {
             $('#addStudentSuccessMessage').fadeIn(700);
             $('#addStudentSuccessMessage').fadeOut(7000);
 
-            document.getElementById('createStudentInput_Name').value = '';
-            document.getElementById('createStudentInput_LastName').value = '';
-            document.getElementById('createStudentInput_SSN').value = '';
+            // La till istället för {input fields} = "";, om något buggar kanske det är för detta?
+            resetAfterAbort()
 
 
             $dropdownListStudents.empty();
@@ -589,7 +589,7 @@ var studentActiveForInput;
 $('#editButtonDropdown').on("click", function () {
 
     $('#updateStudent').fadeIn(300);
-    
+
 
 
     $.get("/api/searchstudents/" + clickedStudentName, function (student) {
@@ -642,8 +642,8 @@ $('#updateStudentEventButton').on("click", function () {
     }
 
     var firstNameInput = $('#createStudentInput_Name').val();
-       var lastNameInput = $('#createStudentInput_LastName').val();
-       var studentSSNInput = $('#createStudentInput_SSN').val();
+    var lastNameInput = $('#createStudentInput_LastName').val();
+    var studentSSNInput = $('#createStudentInput_SSN').val();
 
     var postStudent = {
         id: studentId,
@@ -663,7 +663,7 @@ $('#updateStudentEventButton').on("click", function () {
         contentTyp: "application/json",
         data: postStudent,
         success: function () {
-            
+
 
             $('#updatedStudentSuccessMessage').fadeIn(700);
             $('#updatedStudentSuccessMessage').fadeOut(7000);
@@ -683,7 +683,7 @@ $('#updateStudentEventButton').on("click", function () {
             });
 
 
-           
+
         }
     });
 
