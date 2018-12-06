@@ -147,6 +147,12 @@ $("#saveCourse").on("click", function () {
             $("#createCourse").each(function () {
                 this.reset();
             });
+
+            $("#panelGenerator .row").empty();
+
+            $.get("/api/courses", function (courses) {
+                getStudentsAndCourses(courses);
+            });
         }
     });
 
@@ -173,6 +179,12 @@ $courseTable.on("click", ".remove", function (e) {
                     $.each(data, function (i, course) {
                         appendCourse(course);
                     });
+                });
+
+                $("#panelGenerator .row").empty();
+
+                $.get("/api/courses", function (courses) {
+                    getStudentsAndCourses(courses);
                 });
             }
         });
