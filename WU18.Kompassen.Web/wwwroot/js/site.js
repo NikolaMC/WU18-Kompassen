@@ -471,6 +471,9 @@ $("#avregistreraStudent").on("click", function () {
             dataType: "json",
             data: studentJSON,
             success: function () {
+
+                resetDropdowns();
+                resetAfterAbort();
                 $("#panelGenerator .row").empty();
 
                 $.get("/api/courses", function (courses) {
@@ -514,7 +517,10 @@ function resetDropdowns() {
 $('#studentsAbort').on("click", function (e) {
 
 
+
+    resetDropdowns()
     resetAfterAbort()
+
 
 });
 
