@@ -75,7 +75,7 @@ function appendCourse(courseNew) {
     } else {
         activeInput = activeUnchecked;
     }
-
+    /*
     var checkedName;
     var checkedCredits;
     var checkedTerm;
@@ -104,13 +104,13 @@ function appendCourse(courseNew) {
     } else {
         checkedYear = courseNew.year;
     }
-
+    */
     $courseTable.append(
         '<tr data-id="' + courseNew.id + '">' +
-        '<th scope="row"><span class="noedit courseName">' + checkedName + '</span><input class="edit courseName" /></th>' +
-        '<td><span class="noedit courseCredits">' + checkedCredits + '</span><input class="edit courseCredits" /></td>' +
-        '<td><span class="noedit courseTerm">' + checkedTerm + '</span><input class="edit courseTerm" /></td>' +
-        '<td><span class="noedit courseYear">' + checkedYear + '</span><input class="edit courseYear" /></td>' +
+        '<th scope="row"><span class="noedit courseName">' + courseNew.name + '</span><input class="edit courseName" /></th>' +
+        '<td><span class="noedit courseCredits">' + courseNew.credits + '</span><input class="edit courseCredits" /></td>' +
+        '<td><span class="noedit courseTerm">' + courseNew.term + '</span><input class="edit courseTerm" /></td>' +
+        '<td><span class="noedit courseYear">' + courseNew.year + '</span><input class="edit courseYear" /></td>' +
         '<td>' + activeInput + '</td>' +
         '<td class="buttonContainer"><button data-id="' + courseNew.id + '" class="editCourse noedit btn btn-info">Ändra</button>' +
         '<button data-id="' + courseNew.id + '" class="saveEdit edit btn btn-success">Spara</button>' +
@@ -121,10 +121,10 @@ function appendCourse(courseNew) {
 
     $courseTable1.append(
         '<tr>' +
-        '<th scope="row">' + checkedName + '</th>' +
-        '<td>' + checkedCredits + '</td>' +
-        '<td>' + checkedTerm + '</td>' +
-        '<td>' + checkedYear + '</td>' +
+        '<th scope="row">' + courseNew.name + '</th>' +
+        '<td>' + courseNew.credits + '</td>' +
+        '<td>' + courseNew.term + '</td>' +
+        '<td>' + courseNew.year + '</td>' +
         '<td>' + activeInput + '</td>' +
         '</tr>'
     );
@@ -266,12 +266,41 @@ $courseTable.on("click", ".saveEdit", function () {
         activeControl = false;
     }
 
+    var checkedName;
+    var checkedCredits;
+    var checkedTerm;
+    var checkedYear;
+
+    if ($tr.find("input.courseName").val() === "") {
+        checkedName = "N/A";
+    } else {
+        checkedName = $tr.find("input.courseName").val();
+    }
+
+    if ($tr.find("input.courseCredits").val() === "") {
+        checkedCredits = "N/A";
+    } else {
+        checkedCredits = $tr.find("input.courseCredits").val();
+    }
+
+    if ($tr.find("input.courseTerm").val() === "") {
+        checkedTerm = "N/A";
+    } else {
+        checkedTerm = $tr.find("input.courseTerm").val();
+    }
+
+    if ($tr.find("input.courseYear").val() === "") {
+        checkedYear = "N/A";
+    } else {
+        checkedYear = $tr.find("input.courseYear").val();
+    }
+
     var course = {
         id: $tr.attr("data-id"),
-        name: $tr.find("input.courseName").val(),
-        credits: $tr.find("input.courseCredits").val(),
-        term: $tr.find("input.courseTerm").val(),
-        year: $tr.find("input.courseYear").val(),
+        name: checkedName,
+        credits: checkedCredits,
+        term: checkedTerm,
+        year: checkedYear,
         active: activeControl
     };
 
@@ -328,7 +357,7 @@ $.get("/api/students", function (data) {
 
     $.each(data, function (i, students) {
 
-        getStudentsInDropdown(students)
+        getStudentsInDropdown(students);
 
     });
 
@@ -434,7 +463,7 @@ $(document).on("click", "li.dropdowns a", function (e) {
         $('#dropdownMenuButtonStudents').append(clickedStudentName);
 
 
-    };
+    }
 });
 
 
@@ -536,7 +565,7 @@ $("#avregistreraStudent").on("click", function () {
 
     });
 
-})
+});
 
 var studentIsSelceted = false;
 
@@ -569,8 +598,8 @@ $('#studentsAbort').on("click", function (e) {
 
 
 
-    resetDropdowns()
-    resetAfterAbort()
+    resetDropdowns();
+    resetAfterAbort();
 
 
 });
@@ -587,8 +616,8 @@ $('#createStudentsAbort').on("click", function () {
 
 
 
-    resetDropdowns()
-    resetAfterAbort()
+    resetDropdowns();
+    resetAfterAbort();
 
 });
 
@@ -640,7 +669,7 @@ $('#createNewStudentBtn').on("click", function () {
             $('#addStudentSuccessMessage').fadeOut(7000);
 
             // La till istället för {input fields} = "";, om något buggar kanske det är för detta?
-            resetAfterAbort()
+            resetAfterAbort();
 
 
             $dropdownListStudents.empty();
@@ -703,7 +732,7 @@ $('#editButtonDropdown').on("click", function () {
         document.getElementById('createStudentInput_LastName').value = studentLastNameForInput;
         document.getElementById('createStudentInput_SSN').value = studentSSNForInput;
 
-        if (studentActiveForInput == true) {
+        if (studentActiveForInput) {
 
             $("#createStudentInput_Active").attr("checked", "checked");
         } else {
@@ -741,7 +770,7 @@ $('#updateStudentEventButton').on("click", function () {
         active: createStudentInput_Active
     };
 
-    var postStudent = JSON.stringify(postStudent);
+    var postStudentJSON = JSON.stringify(postStudent);
 
 
     $.ajax({
@@ -749,7 +778,7 @@ $('#updateStudentEventButton').on("click", function () {
         url: "/api/students/" + studentId,
         dataType: "json",
         contentTyp: "application/json",
-        data: postStudent,
+        data: postStudentJSON,
         success: function () {
 
 
@@ -763,7 +792,7 @@ $('#updateStudentEventButton').on("click", function () {
 
                 $.each(data, function (i, students) {
 
-                    getStudentsInDropdown(students)
+                    getStudentsInDropdown(students);
 
                 });
 
