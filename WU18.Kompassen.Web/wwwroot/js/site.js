@@ -151,11 +151,40 @@ $("#saveCourse").on("click", function () {
         activeTrue = false;
     }
 
+    var checkedName;
+    var checkedCredits;
+    var checkedTerm;
+    var checkedYear;
+
+    if ($courseName.val() === "") {
+        checkedName = "N/A";
+    } else {
+        checkedName = $courseName.val();
+    }
+
+    if ($coursePoints.val() === "") {
+        checkedCredits = "N/A";
+    } else {
+        checkedCredits = $coursePoints.val();
+    }
+
+    if ($courseTerm.val() === "") {
+        checkedTerm = "N/A";
+    } else {
+        checkedTerm = $courseTerm.val();
+    }
+
+    if ($courseYear.val() === "") {
+        checkedYear = "N/A";
+    } else {
+        checkedYear = $courseYear.val();
+    }
+
     var course = {
-        name: $courseName.val(),
-        term: $courseTerm.val(),
-        year: $courseYear.val(),
-        credits: $coursePoints.val(),
+        name: checkedName,
+        term: checkedTerm,
+        year: checkedYear,
+        credits: checkedCredits,
         active: activeTrue
     };
 
