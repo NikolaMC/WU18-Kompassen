@@ -153,6 +153,16 @@ $("#saveCourse").on("click", function () {
             $.get("/api/courses", function (courses) {
                 getStudentsAndCourses(courses);
             });
+
+            $dropdownListCourses.empty();
+
+            $.get("/api/courses", function (data) {
+                $.each(data, function (i, course) {
+
+                    $dropdownListCourses.append('<li class="dropdownsCourses dropdownCourses"><a href="#">' + course.name + '</a></li>');
+
+                });
+            });
         }
     });
 
