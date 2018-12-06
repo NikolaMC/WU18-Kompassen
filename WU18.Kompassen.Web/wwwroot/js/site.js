@@ -170,7 +170,6 @@ $courseTable.on("click", ".remove", function (e) {
 
                 $.get("/api/courses", function (data) {
 
-                    console.log(data);
                     $.each(data, function (i, course) {
                         appendCourse(course);
                     });
@@ -227,9 +226,6 @@ $courseTable.on("click", ".saveEdit", function () {
 
     var courseJSON = JSON.stringify(course);
 
-    console.log(course);
-    console.log(courseJSON);
-
     $.ajax({
         type: "PUT",
         url: "/api/courses/" + $tr.attr("data-id"),
@@ -242,7 +238,6 @@ $courseTable.on("click", ".saveEdit", function () {
 
             $.get("/api/courses", function (data) {
 
-                console.log(data);
                 $.each(data, function (i, course) {
                     appendCourse(course);
                 });
@@ -280,7 +275,6 @@ var $dropdownListStudents = $("#dropdownListStudents");
 $.get("/api/students", function (data) {
 
 
-    //console.log(data);
     $.each(data, function (i, students) {
 
         getStudentsInDropdown(students)
@@ -399,7 +393,6 @@ $('#addStudentsEventButton').on("click", function (e) {
 
     $.get("/api/searchstudents/" + clickedStudentName, function (student) {
         
-        console.log(student);
 
         $.each(student, function (i, studendata) {
 
@@ -423,7 +416,6 @@ $('#addStudentsEventButton').on("click", function (e) {
         };
 
         var courseJSON = JSON.stringify(postStudent);
-        console.log(courseJSON);
 
 
         $.ajax({
@@ -435,7 +427,6 @@ $('#addStudentsEventButton').on("click", function (e) {
             success: function (Course) {
 
                 $("#panelGenerator .row").empty();
-                console.log('Panel generator empty');
                 $('#registeredStudentSuccessMessage').fadeIn(700);
                 $('#registeredStudentSuccessMessage').fadeOut(7000);
 
@@ -450,6 +441,48 @@ $('#addStudentsEventButton').on("click", function (e) {
 
 });
 
+
+$("#avregistreraStudent").on("click", function () {
+
+    $.get("/api/searchstudents/" + clickedStudentName, function (student) {
+
+        $.each(student, function (i, studendata) {
+
+            var studentId = studendata;
+
+            sendingStudentId = studentId.id;
+
+        });
+
+        var avregistreraStudent = {
+
+            courseId: selectedCourseId,
+            studentId: sendingStudentId
+
+        };
+
+        var studentJSON = JSON.stringify(avregistreraStudent);
+
+        $.ajax({
+
+            type: "DELETE",
+            contentType: "application/json",
+            url: "api/studentcourses",
+            dataType: "json",
+            data: studentJSON,
+            success: function () {
+                $("#panelGenerator .row").empty();
+
+                $.get("/api/courses", function (courses) {
+                    getStudentsAndCourses(courses);
+                });
+            }
+
+        });
+
+    });
+
+})
 
 var studentIsSelceted = false;
 
@@ -555,7 +588,6 @@ $('#createNewStudentBtn').on("click", function () {
 
             $dropdownListStudents.empty();
             $.get("/api/students", function (data) {
-                //console.log(data);
                 $.each(data, function (i, students) {
 
                     $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' + students.lastName + '</a></li>');
@@ -613,7 +645,6 @@ $('#editButtonDropdown').on("click", function () {
         document.getElementById('createStudentInput_Name').value = studentFirstNameForInput;
         document.getElementById('createStudentInput_LastName').value = studentLastNameForInput;
         document.getElementById('createStudentInput_SSN').value = studentSSNForInput;
-        console.log(studentActiveForInput);
 
         if (studentActiveForInput == true) {
 
@@ -673,7 +704,6 @@ $('#updateStudentEventButton').on("click", function () {
             $.get("/api/students", function (data) {
 
 
-                //console.log(data);
                 $.each(data, function (i, students) {
 
                     getStudentsInDropdown(students)
