@@ -590,7 +590,7 @@ $('#createNewStudentBtn').on("click", function () {
             $.get("/api/students", function (data) {
                 $.each(data, function (i, students) {
 
-                    $dropdownListStudents.append('<li class="dropdowns"><a href="#">' + students.firstName + ' ' + students.lastName + '</a></li>');
+                    getStudentsInDropdown(students);
 
                 });
             });
