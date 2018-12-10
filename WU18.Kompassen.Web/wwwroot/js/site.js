@@ -167,7 +167,7 @@ $("#saveCourse").on("click", function () {
     } else {
         checkedCredits = $coursePoints.val();
     }
-
+    //s
     if ($courseTerm.val() === "") {
         checkedTerm = "N/A";
     } else {
